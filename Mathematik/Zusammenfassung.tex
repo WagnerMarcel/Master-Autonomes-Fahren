@@ -1,0 +1,303 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{pdflscape}
+\usepackage[margin=2cm, left=3cm]{geometry}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tocbasic}
+\usepackage{fancyhdr}
+\usepackage{float} 
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[english, ngerman]{babel}
+\usepackage{hyperref}
+\usepackage[
+    backend=biber,		
+    bibwarn=true,
+    bibencoding=utf8,	% wenn .bib in utf8, sonst ascii
+    sortlocale=de_DE,
+    style=numeric-comp,
+]{biblatex}
+\usepackage{csquotes}
+
+\addbibresource{bibliographie.bib}
+
+\selectlanguage{ngerman}
+
+\hypersetup{%
+    colorlinks=true, 		% Aktivieren von farbigen Links im Dokument
+    linkcolor=black, 	    % Farbe festlegen
+    citecolor=black,
+    filecolor=black,
+    menucolor=black,
+    urlcolor=black,
+    linktoc=all,            % Seitenzahlen und Text klickbar
+    bookmarksnumbered=true 	% Überschriftsnummerierung im PDF Inhalt anzeigen.
+}
+
+\newcommand\todo[1]{\textit{\textcolor{red}{\\TODO: #1}}}
+
+\DeclareNewTOC[%
+ forcenames,
+ type=formel,
+ name={Formel},%
+ listname={Formelverzeichnis}
+]{for}
+\newcommand*{\formelentry}[1]{%
+     \addcontentsline{for}{formel}{\protect\numberline{\theequation} #1}%
+    }
+
+
+
+\title{Master Autonomes Fahren - Mathematik Zusammenfassung}
+\author{Marcel Wagner}
+\date{\today}
+
+
+\begin{document}
+\pagenumbering{Roman}
+\maketitle
+\tableofcontents
+\newpage
+\listoffigures
+%\listoffigures
+\listofformels
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Mathematische Symbole}
+\subsection{Mengen}
+\begin{tabular}{p{0.1\textwidth}|p{0.2\textwidth}|p{0.6\textwidth}}
+	Symbol & Verwendung & Bedeutung\\
+	\hline
+	$\in$ & $\omega\quad\in\quad\Omega$ & Element ($\omega$ ist in $\Omega$ enthalten) \\
+	$\cap$ & $A\quad\cap\quad B$ & Disjunkt (Kein Teil von A ist ein Teil von B) \\
+	$\cup$ & $A\quad\cup\quad B$ & Kunjunktion (Ein Teil von A ist ein Teil von B)\\
+	$\subseteq$ & $A\quad\subseteq\quad B$ & Teilmenge (A ist eine Teilmenge von B)\\
+	$\setminus$ & $A\quad\setminus\quad B$ & Differenz (Differenz der mengen A und B)\\
+	$^\mathrm{C}$ & $A^\mathrm{C}$ & Komplement (Differenz des Universums (kann eine\newline größere Menge sein) und der Teilmenge)
+\end{tabular}
+
+\section{Statistik}
+\subsection{Arithmetisches Mittel}
+\begin{equation}
+	\overline{x} := \frac{x_1 + ... + x_n}{n} = \frac{1}{n}\sum_{i=1}^{n}{x_i}
+\end{equation}
+\subsection{Mittlerer Abstand}
+Der mittlere Abstand wird nicht sehr häufig verwendet, da das Rechnen mit Beträgen sehr mühsam ist. Die Varianz (durchschnittliche quadratische Abweichung) eignet sich besser.
+\begin{equation}
+	\frac{1}{n}\sum_{i=1}^{n}{|x_i-\overline{x}|}
+\end{equation}
+\subsection{Varianz}
+\begin{equation}
+	s_x^2= \frac{1}{n-1}\sum_{i=1}^n{(x_i-\overline{x})^2}
+\end{equation}
+\subsection{Standartabweichung}
+\begin{equation}
+	s_x = \sqrt{s_x^2}
+\end{equation}
+\subsection{Kovarianz}
+\begin{equation}
+	y_{xy}:=\frac{1}{n-1}\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})
+\end{equation}
+\subsection{Korrelationskoeffizient}
+\begin{equation}
+	r_{xy}:=\frac{s_{xy}}{s_x\cdot s_y}
+\end{equation}
+\subsection{Regressionsgerade}
+\begin{equation}
+	y = a + bx
+\end{equation}
+\begin{equation}
+	b = \frac{s_{xy}}{s_x^2}
+\end{equation}
+\begin{equation}
+	a = \overline{y} - b\overline{x}
+\end{equation}
+\subsection{Bestimmtheitsmaß}
+\begin{equation}
+	R^2 = \frac{\sum_{i=1}^n (\hat{y}_i-\overline{y})^2}{\sum_{i=1}^n (y_i-\overline{y})^2} = \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i-\overline{y})^2}
+\end{equation}
+\todo{Beschreibung von y dach und y quer}
+\subsection{Bestimmtheitsmaß}
+\begin{equation}
+	R^2 = r_{xy}^2
+\end{equation}
+
+\section{Wahrscheinlichkeitsrechnung}
+\subsection{Fakultät}
+\begin{equation}
+	n! = n \cdot (n-1) \cdot \dotsc \cdot 2 \cdot 1 
+\end{equation}
+\subsection{Binomialkoeffizient}
+\begin{equation}
+	{n \choose k} = \frac{n!}{k!\cdot(n-k)!}
+\end{equation}
+\subsection{Kugeln Ziehen}
+\begin{tabular}{c|c|c}
+	 & mit Reihenfolge & ohne Reihenfolge 
+	 \\\hline
+	 mit Zurücklegen & $n^k$ & ${n+k-1 \choose k}$
+	 \\\hline
+	 ohne Zurücklegen & $\frac{n!}{(n-k)!}$ & ${n \choose k}$
+\end{tabular}
+\subsection{Menge}
+Unter einer Menge verstehen wir die Zusammenfassung unterscheidbarer Elemente zu einer Gesamtheit.
+\subsection{Gleichheit}
+$A = B:\Leftrightarrow$ $A$ und $B$ besitzen die gleichen Elemente.
+\subsection{Teilmenge}
+$A \subset B:\Leftrightarrow$ wenn alle Elemente von $A$ auch in $B$ sind, dann ist $A$ eine Teilmenge von $B$ oder auch $B$ die Obermenge von $A$.\\
+Jede Menge ist Teilmenge von sich selbst. 
+\subsection{Potenzmenge}
+Die Potenzmenge $\mathcal{P}(X)$ ist eine Menge welche aus allen Teilmengen von $U \subseteq X$ besteht.
+\subsection{Mächtigkeit}
+$|A|:=$ Zahl der Elemente von A.
+\subsection{Vereinigung}
+$A\cup B:=$ Menge aus allen Elementen welche in $A$ oder in $B$ oder in beiden enthalten sind.
+\subsection{Schnitt}
+$A\cap B:=$ Menge aus allen Elementen welche in $A$ und in $B$ enthalten sind.
+\subsection{Differenz}
+$A\setminus B:=$ Menge aus allen Elementen welche zu $A$ aber \textbf{nicht} zu $B$ gehören.
+\subsection{Komplement}
+$A^C:=$ Menge aus allen Elementen welche \textbf{nicht} zu $A$ gehören.
+\subsection{Kartesisches Produkt}
+\begin{equation}
+	A \times B:={(a, b):a\in A, b\in B}
+\end{equation}
+\subsection{Zufallsexperiment}
+\begin{itemize}
+	\item Genau festgelegte Bedingungen
+	\item Zufälliger Ausgang
+	\item Beliebig oft wiederholbar
+	\item Ein Versuch bezeichnet einen Vorgang bei dem mehrere Ergebnisse (Elementarereignis) eintreten können
+	\item Menge aller Elementarereignisse wird als Ergebnismenge (Ergebnisraum) $\Omega$ bezeichnet
+\end{itemize}
+\subsection{Ereignis}
+\begin{itemize}
+	\item Eine Teilmenge $A \subset \Omega$ heißt Ereignis
+	\item $A = \emptyset$ unmögliches Ereignis
+	\item $A = \Omega$ sicheres Ereignis
+\end{itemize}
+\subsection{Disjunkte Ereignisse}
+Zwei ereignisse sind disjunkt (unvereinbar) wenn deren Schnitt gleich der leeren Menge ist $A \cap B = \emptyset$.
+
+\subsection{$\sigma$-Algebra}
+Eine Teilmenge einer Potenzmenge (Menge von Teilmengen, $\mathcal{A}\subseteq\mathcal{P}(\Omega)$) heißt $\sigma$-Algebra wenn sie folgende Bedingungen erfüllt:
+\begin{itemize}
+	\item Die Teilmenge $\mathcal{A}$ der Potenzmenge $\mathcal{P}(\Omega)$ enthält die Grundmenge $\Omega$.
+	\item Das Komplement $A^\mathrm{C}$ eines Elements der Teilmenge $A \in\mathcal{A}$ ist gleich der Differenz aus Grundmenge und Element $A^\mathrm{C} := \Omega\setminus A$. Stabilität des Komplements.
+	\item Sind die Mengen in der Teilmenge der Potenzmenge $A_1,A_2,A_3,... \in \mathcal{A}$ enthalten, so ist auch die Vereinigung aller Mengen in der Teilmenge der Potenzmenge enthalten $\bigcup\limits_{n\epsilon \mathbb{N}}A_n \in \mathcal{A}$
+	\item Alle vorangegangenen Mengenoperationen können auf die Teilmengen angewendet werden. 
+\end{itemize}
+\subsection{Axiome der Wahrscheinlichkeitsrechnung}
+Die Funktion $P$ ordnet jedem Ereignis $A$ eine Wahrscheinlichkeit $P(A)$ zu.
+\begin{enumerate}
+	\item[(I)] Für jedes Ereignis $A\subset \Omega$ gilt $0\leq P(A) \leq 1$
+	\item[(I')] Für das unmögliche Ereignis gilt $P(\emptyset) = 0$
+	\item[(II)] Für das sichere Ereignis $\Omega$ gilt $P(\Omega) = 1$
+	\item[(II')] Für ein Ereignis $A \subset \Omega$ gilt $P(A^C) = 1- P(A)$
+	\item[(III)] Für disjunkte Ereignisse $A$ und $B$ gilt $P(A\cup B) = P(A)+P(B)$ 
+	\item[(III')] Für zwei Ereignisse $A,B \subset \Omega$ gilt $P(A\cup B)= P(A)+P(B)-P(A\cap B)$ 
+\end{enumerate}
+\subsection{Laplace Experiment}
+Endlich viele Elementarereignisse welche alle gleich wahrscheinlich sind.\\
+Satz von Laplace:
+\begin{equation}
+	P(A) = \frac{|A|}{|\Omega|}=\frac{\text{Anzahl der Elementarereignisse in $A$}}{\text{Anzahl aller möglichen Elementarereignisse}}
+\end{equation}
+\subsection{Unabhängige Ereignisse}
+Zwei Ereignisse heißen \textbf{unabhängig} wenn gilt: 
+\begin{equation}
+	P(A\cap B) = P(A) \cdot P(B)
+\end{equation}
+Sie heißen \textbf{abhängig} wenn sie nicht unabhängig sind.\\
+Für unabhängige Ereignisse gilt:
+\begin{equation}
+	P(A) = \frac{P(A\cap B)}{P(B)} \text{\quad bzw. \quad} P(B)=\frac{P(A\cap B)}{P(A)}
+\end{equation} 
+\subsection{Bedingte Wahrscheinlichkeit}
+"Wahrscheinlichkeit von A gegeben B".
+\begin{equation}
+	P(A|B) := \frac{P(A\cap B)}{P(B)}
+\end{equation}
+Sind $A, B \subset \Omega$ \textbf{unabhängige} Ereignisse gilt:
+\begin{equation}
+	P(A|B) = P(A)
+\end{equation}
+Sind $A, B \subset \Omega$ \textbf{abhängige} Ereignisse gilt:
+\begin{equation}
+	P(A|B) \neq P(A)
+\end{equation}
+\subsection{Multiplikationssatz}
+\begin{equation}
+	P(A\cap B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B)
+\end{equation}
+\subsection{Satz der totalen Wahrscheinlichkeit}
+Der Ergebnisraum ist gegeben durch $\Omega = \bigcup\limits_{j=1}^\infty B_j$ mit $P(B_j)>0$ und alle $j$ sind paarweise Disjunkt $B_i \cap B_j = \emptyset$ für $i\neq j$
+\begin{equation}
+	P(A) = \sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)
+\end{equation}
+Für den Spezialfall $\Omega = B\cup B^C$ gilt:
+\begin{equation}
+	P(A) = P(B) \cdot P(A|B) + P(B^C) \cdot P(A|B^C)
+\end{equation}
+\subsection{Satz von Bayes}
+Besteht aus dem Multiplikationssatz \& der totalen Wahrscheinlichkeit:
+\begin{equation}
+	P(A|B)=\frac{P(A)\cdot P(B|A)}{P(B)}= \frac{P(A)\cdot P(B|A)}{P(A)\cdot P(B|A) + P(A^C)\cdot P(B|A^C)}
+\end{equation}
+\subsection{Zufallsvariablen}
+Eine Zufallsvariable ist eine Abbildung des Ergebnisraums auf den reellen Zahlenraum $\Omega\longmapsto\mathbb{R}$. Die Zufallsvariable ordnet jedem Elementarereignis eine reelle Zahl zu.\\
+Zwei Zufallsvariablen sind \textbf{unabhängig} wenn gilt:
+\begin{equation}
+	P(X\in A, Y\in B) = P(X\in A) \cdot P(Y\in B) \text{\quad für alle\quad} A,B\subset \mathbb{R} 
+\end{equation}
+Die Zufallsvariablen heißen \textbf{abhängig} wenn sie nicht unabhängig sind.\\
+Die Zufallsvariable wird \textbf{diskret} genannt wenn sie nur endlich viele oder abzählbar unendlich viele Werte annimmt. Es gilt:
+\begin{equation}
+	\sum\limits_{i=1}^\infty P(X=x_i)=1
+\end{equation}
+\subsection{Wahrscheinlichkeitsfunktion}
+Für die diskrete Zufallsvariable $X$ und ihre Ausprägungen lautet die Wahrscheinlichkeitsfunktion:
+\begin{equation}
+	p_X(x):=
+	\begin{cases}
+		P(X=x_i) \text{, für } x = x_i \text{ mit Zählindex } i \in \mathbb{N}\\
+		0 \text{, sonst}
+	\end{cases}
+\end{equation}
+\begin{equation}
+	\sum\limits_{x_i}p_X(x_i)=1=p(\Omega)
+\end{equation}
+\subsection{Verteilungsfunktion diskreter Zufallsvariablen}
+Für die diskrete Zufallsvariable $X$ und ihre Ausprägungen lautet die Verteilungsfunktion:
+\begin{equation}
+	F_X(x):=P(X\leq x)=\sum_{x_i\leq x}P(X=x_i)=\sum_{x_i\leq x}p_X(x_i)
+\end{equation}
+\subsection{Stetige Zufallsvariable}
+
+\section{Zusatz}
+\subsection{Integration}
+\begin{equation}
+	\int\limits_{a}^{b}f(x) dx = [F(x)]_a^b = F(b) - F(a)
+\end{equation}
+\begin{equation}
+	\int\limits_{a}^{b}f(x) + g(x) dx = \int\limits_{a}^{b}f(x) dx + \int\limits_{a}^{b}g(x) dx
+\end{equation}
+\begin{equation}
+	\int\limits_{a}^{b}c\cdot f(x) dx = c\cdot \int\limits_{a}^{b}f(x) dx
+\end{equation}
+\subsection{Partielle Integration}
+\begin{equation}
+	u(x)\cdot v(x) = \int u'(x) \cdot v(x) dx + \int u(x) \cdot v'(x) dx
+\end{equation}
+\todo{Basics Integration}
+\subsection{Differentialgleichungen}
+\todo{Basics DGL Lösungen}
+\newpage
+\pagenumbering{Alph}
+\section{Anhang}
+\printbibliography[heading=subbibnumbered]
+\end{document}
