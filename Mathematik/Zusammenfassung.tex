@@ -277,7 +277,102 @@ Für die diskrete Zufallsvariable $X$ und ihre Ausprägungen lautet die Verteilu
 	F_X(x):=P(X\leq x)=\sum_{x_i\leq x}P(X=x_i)=\sum_{x_i\leq x}p_X(x_i)
 \end{equation}
 \subsection{Stetige Zufallsvariable}
-
+Eine zuvallsvariable wird \textbf{stetig} genannt, wenn es eine nicht-negative Funktion $f_X\geq 0$ mit 
+\begin{equation}
+	\int\limits_{-\infty}^\infty f_X(x) dx = 1
+\end{equation}
+gibt, so dass für alle $a,b \in \mathbb{R} \cup \{-\infty, \infty\}$ mit $a\leq b$ gilt:
+\begin{equation}
+	P(X\in [a,b]) = P(a\leq X \leq b) = \int\limits_a^b f_X(x)dx
+\end{equation}
+$f_X$ wird als \textbf{Dichtefunktion} (Wahrscheinlichkeitsdichte) der Zufallsvariable $X$ bezeichnet.
+Ihre Verteilungsfunktion $F_X$ lautet:
+\begin{equation}
+	F_X(x):=P(X\leq x) = \int\limits_{-\infty}^x f_X(u)du
+\end{equation}
+Außerdem gilt:
+\begin{equation}
+	f_X = F'_X
+\end{equation}
+Daraus folgt:
+\begin{equation}
+	P(X\in [a,b]) = P(a\leq X \leq b) = \int\limits_a^b f_X(x)dx = F_X(b) - F_X(a)
+\end{equation}
+\subsection{Quantil}
+Bezeichnet das kleinste $x$ mit $F_X(x)\geq p$. \\
+Spezielle Quantile sind:
+\begin{itemize}
+	\item $x_{0.5}$ Median
+	\item $x_{0.25}, x_{0.5}, x_{0.75}$ erstes, zweites und drittes Quantil
+	\item $x_{0.01}, x_{0.02}, x_{0.03}, ...$ erstes, zweites, drittes, ... Perzentil
+\end{itemize}
+\subsection{Symmetrische Zufallsvariable}
+Eine Zufallsvariable $X$ wird \textbf{symmetrisch} genannt, wenn es eine Symmetrieachse $c \in \mathbb{R}$ gibt, so dass für alle $d\in\mathbb{R}$ gilt:
+\begin{itemize}
+	\item für diskrete Zufallsvariablen 
+	\begin{equation}
+		P(X=c-d) = P(X=c+d)
+	\end{equation}
+	\item für stetige Zufallsvariablen
+	\begin{equation}
+		f_X(c-d)=f_X(c+d)
+	\end{equation}
+\end{itemize}
+\subsection{Mehrdimensionale Verteilungsfunktion}
+Die \textbf{Verteilungsfunktion} einer zweidimensionalen Zufallsveriablen $Z = (X_1,...,X_n)$ wird definiert durch:
+\begin{equation}
+	F_Z(x_1,...,y)=P(X_1\leq x_1,..., X_n\leq x_n).
+\end{equation}
+\subsection{Rand-Verteilungsfunktion}
+Als Rand-Verteilungsfunktion einer mehrdimensionalen Zufallsvariablen $Z=(X_1,...,X_n)$ wird diejenige Funktion bezeichnet welche lediglich eine dimension betrachtet.
+\begin{equation}
+	F_{X_i}(x_i)=F_Z(\infty,...,\infty,x_i,\infty,...,\infty)
+\end{equation}
+Für die zweidimensionale Rand-Verteilungsfunktion ($Z=(X,Y)$, $F_Z(x,y)$) gilt:
+\begin{equation}
+	F_X(x)=F_Z(x,\infty) \text{ sowie } F_Y(y) = F_Z(\infty,y)
+\end{equation}
+\subsection{Totale Wahrscheinlichkeit}
+\begin{equation}
+	f_X(x) = \int f_{X,Y}(x,y)dy = \int f_Y(y) \cdot f_X(x|Y=y) dy
+\end{equation}
+Mit dieser Formel lässt sich eine Rand-Dichte aus einer gemeinsamen Dichte bestimmen, dies wird als \textbf{Marginalisierung} bezeichnet.
+\subsection{Erwartungswert einer Zufallsvariable}
+Für eine diskrete Zufallsvariable mit $(x_i)_{i\in \mathbb{N}}$ Ausprägungen und Wahrscheinlichkeitsfunktion $p_X$ lautet der \textbf{Erwartungswert}:
+\begin{equation}
+	E(X):=\sum\limits_{i=1}^\infty x_i\cdot p_X(x_i)
+\end{equation}
+Für eine stetige Zufallsvariable mit Dichte $f_X$ lautet der Erwartungswert:
+\begin{equation}
+	E(X):=\int\limits_{-\infty}^\infty x\cdot f_X(x) dx
+\end{equation}
+\subsection{Transformationen von Zufallsvariablen}
+\begin{itemize}
+	\item Linearität:
+	\begin{equation}
+		E(a\cdot X + b\cdot Y)=a\cdot E(X)+b\cdot E(Y)
+	\end{equation}
+	\item Multiplikation:
+	\begin{equation}
+		E(X\cdot Y) = E(X)\cdot E(Y)
+	\end{equation}
+\end{itemize}
+\subsection{Varianz einer Zufallsvariable}
+Eine Zufallsvariable mit Erwartungswert $\mu = E(X)$ hat die \textbf{Varianz}:
+\begin{equation}
+	\sigma^2(X):=E[(X-\mu)^2]=E(X^2)-\mu^2
+\end{equation}
+Die Standartabweichung lautet:
+\begin{equation}
+	\sigma(X) = \sqrt{\sigma^2(X)}
+\end{equation}
+\subsection{Grenzwertsatz von Zufallsvariablen}
+Für $X_1,...,X_n$ unabhängige und identisch verteilte Zufallsvariablen mit $E(X_i)=\mu$, $\sigma(X_i)=\sigma$ und $\overline{X}:=\frac{1}{n}(X_1+...+X_n)$ gilt:
+\begin{align}
+	E(\overline{X})=\mu \\
+	\sigma^2(\overline{X})=\frac{\sigma^2}{n}\\
+	\sigma(X)=\frac{\sigma}{\sqrt{n}}
+\end{align}
 \section{Zusatz}
 \subsection{Integration}
 \begin{equation}
