@@ -60,10 +60,10 @@
 \pagenumbering{Roman}
 \maketitle
 \tableofcontents
-\newpage
-\listoffigures
+%\newpage
 %\listoffigures
-\listofformels
+%\listoffigures
+%\listofformels
 \newpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
@@ -77,64 +77,68 @@
 	$\cup$ & $A\quad\cup\quad B$ & Kunjunktion (Ein Teil von A ist ein Teil von B)\\
 	$\subseteq$ & $A\quad\subseteq\quad B$ & Teilmenge (A ist eine Teilmenge von B)\\
 	$\setminus$ & $A\quad\setminus\quad B$ & Differenz (Differenz der mengen A und B)\\
-	$^\mathrm{C}$ & $A^\mathrm{C}$ & Komplement (Differenz des Universums (kann eine\newline größere Menge sein) und der Teilmenge)
+	$^\mathrm{C}$ & $A^\mathrm{C}$ & Komplement (Differenz des Universums (kann eine\newline größere Menge sein) und der Teilmenge)\\
+	$\mathbb{N}$ & Natürliche Zahlen & Positive Ganze Zahlen ohne Null (1,2,3,...)\\
+	$\mathbb{Z}$ & Ganze Zahlen & Ganze Zahlen (...,-2,-1,0,1,2,...)\\
+	$\mathbb{Q}$ & Rationale Zahlen & $z\cdot \frac{1}{x}$ mit $z,x \in \mathbb{Z}$\\
+	$\mathbb{R}$ & Reelle Zahlen & Erweiterung der Rationalen Zahlen durch diejenigen\newline Zahlen welche sich nicht durch Brüche darstellen\newline lassen (z.B.$\sqrt{2}, \pi$)\\
+	$\mathbb{C}$ & Komplexe Zahlen & $a+bi$ mit $a,b\in \mathbb{R}$ und $i^2 = -1$\\
 \end{tabular}
 
 \section{Statistik}
 \subsection{Arithmetisches Mittel}
-\begin{equation}
+\begin{equation*}
 	\overline{x} := \frac{x_1 + ... + x_n}{n} = \frac{1}{n}\sum_{i=1}^{n}{x_i}
-\end{equation}
+\end{equation*}
 \subsection{Mittlerer Abstand}
 Der mittlere Abstand wird nicht sehr häufig verwendet, da das Rechnen mit Beträgen sehr mühsam ist. Die Varianz (durchschnittliche quadratische Abweichung) eignet sich besser.
-\begin{equation}
+\begin{equation*}
 	\frac{1}{n}\sum_{i=1}^{n}{|x_i-\overline{x}|}
-\end{equation}
+\end{equation*}
 \subsection{Varianz}
-\begin{equation}
+\begin{equation*}
 	s_x^2= \frac{1}{n-1}\sum_{i=1}^n{(x_i-\overline{x})^2}
-\end{equation}
+\end{equation*}
 \subsection{Standartabweichung}
-\begin{equation}
+\begin{equation*}
 	s_x = \sqrt{s_x^2}
-\end{equation}
+\end{equation*}
 \subsection{Kovarianz}
-\begin{equation}
+\begin{equation*}
 	y_{xy}:=\frac{1}{n-1}\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})
-\end{equation}
+\end{equation*}
 \subsection{Korrelationskoeffizient}
-\begin{equation}
+\begin{equation*}
 	r_{xy}:=\frac{s_{xy}}{s_x\cdot s_y}
-\end{equation}
+\end{equation*}
 \subsection{Regressionsgerade}
-\begin{equation}
+\begin{equation*}
 	y = a + bx
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 	b = \frac{s_{xy}}{s_x^2}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 	a = \overline{y} - b\overline{x}
-\end{equation}
+\end{equation*}
 \subsection{Bestimmtheitsmaß}
-\begin{equation}
+\begin{equation*}
 	R^2 = \frac{\sum_{i=1}^n (\hat{y}_i-\overline{y})^2}{\sum_{i=1}^n (y_i-\overline{y})^2} = \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i-\overline{y})^2}
-\end{equation}
-\todo{Beschreibung von y dach und y quer}
-\subsection{Bestimmtheitsmaß}
-\begin{equation}
+\end{equation*}
+mit Arithmetischem Mittel $\overline{y}$ und Ausgleichsgerade $\hat{y}_i = y(x_i) = a+bx_i$.
+\begin{equation*}
 	R^2 = r_{xy}^2
-\end{equation}
+\end{equation*}
 
 \section{Wahrscheinlichkeitsrechnung}
 \subsection{Fakultät}
-\begin{equation}
+\begin{equation*}
 	n! = n \cdot (n-1) \cdot \dotsc \cdot 2 \cdot 1 
-\end{equation}
+\end{equation*}
 \subsection{Binomialkoeffizient}
-\begin{equation}
+\begin{equation*}
 	{n \choose k} = \frac{n!}{k!\cdot(n-k)!}
-\end{equation}
+\end{equation*}
 \subsection{Kugeln Ziehen}
 \begin{tabular}{c|c|c}
 	 & mit Reihenfolge & ohne Reihenfolge 
@@ -145,27 +149,36 @@ Der mittlere Abstand wird nicht sehr häufig verwendet, da das Rechnen mit Betr�
 \end{tabular}
 \subsection{Menge}
 Unter einer Menge verstehen wir die Zusammenfassung unterscheidbarer Elemente zu einer Gesamtheit.
-\subsection{Gleichheit}
+\subsubsection{Gleichheit}
 $A = B:\Leftrightarrow$ $A$ und $B$ besitzen die gleichen Elemente.
-\subsection{Teilmenge}
+\subsubsection{Teilmenge}
 $A \subset B:\Leftrightarrow$ wenn alle Elemente von $A$ auch in $B$ sind, dann ist $A$ eine Teilmenge von $B$ oder auch $B$ die Obermenge von $A$.\\
 Jede Menge ist Teilmenge von sich selbst. 
-\subsection{Potenzmenge}
+\subsubsection{Potenzmenge}
 Die Potenzmenge $\mathcal{P}(X)$ ist eine Menge welche aus allen Teilmengen von $U \subseteq X$ besteht.
-\subsection{Mächtigkeit}
+\subsubsection{Mächtigkeit}
 $|A|:=$ Zahl der Elemente von A.
-\subsection{Vereinigung}
+\subsubsection{Vereinigung}
 $A\cup B:=$ Menge aus allen Elementen welche in $A$ oder in $B$ oder in beiden enthalten sind.
-\subsection{Schnitt}
+\subsubsection{Schnitt}
 $A\cap B:=$ Menge aus allen Elementen welche in $A$ und in $B$ enthalten sind.
-\subsection{Differenz}
+\subsubsection{Differenz}
 $A\setminus B:=$ Menge aus allen Elementen welche zu $A$ aber \textbf{nicht} zu $B$ gehören.
-\subsection{Komplement}
+\subsubsection{Komplement}
 $A^C:=$ Menge aus allen Elementen welche \textbf{nicht} zu $A$ gehören.
-\subsection{Kartesisches Produkt}
-\begin{equation}
+\subsubsection{Kartesisches Produkt}
+\begin{equation*}
 	A \times B:={(a, b):a\in A, b\in B}
-\end{equation}
+\end{equation*}
+\subsubsection{$\sigma$-Algebra}
+Eine Teilmenge einer Potenzmenge (Menge von Teilmengen, $\mathcal{A}\subseteq\mathcal{P}(\Omega)$) heißt $\sigma$-Algebra wenn sie folgende Bedingungen erfüllt:
+\begin{itemize}
+	\item Die Teilmenge $\mathcal{A}$ der Potenzmenge $\mathcal{P}(\Omega)$ enthält die Grundmenge $\Omega$.
+	\item Das Komplement $A^\mathrm{C}$ eines Elements der Teilmenge $A \in\mathcal{A}$ ist gleich der Differenz aus Grundmenge und Element $A^\mathrm{C} := \Omega\setminus A$. Stabilität des Komplements.
+	\item Sind die Mengen in der Teilmenge der Potenzmenge $A_1,A_2,A_3,... \in \mathcal{A}$ enthalten, so ist auch die Vereinigung aller Mengen in der Teilmenge der Potenzmenge enthalten $\bigcup\limits_{n\epsilon \mathbb{N}}A_n \in \mathcal{A}$
+	\item Alle vorangegangenen Mengenoperationen können auf die Teilmengen angewendet werden. 
+\end{itemize}
+
 \subsection{Zufallsexperiment}
 \begin{itemize}
 	\item Genau festgelegte Bedingungen
@@ -180,17 +193,18 @@ $A^C:=$ Menge aus allen Elementen welche \textbf{nicht} zu $A$ gehören.
 	\item $A = \emptyset$ unmögliches Ereignis
 	\item $A = \Omega$ sicheres Ereignis
 \end{itemize}
-\subsection{Disjunkte Ereignisse}
+\subsubsection{Disjunkte Ereignisse}
 Zwei ereignisse sind disjunkt (unvereinbar) wenn deren Schnitt gleich der leeren Menge ist $A \cap B = \emptyset$.
-
-\subsection{$\sigma$-Algebra}
-Eine Teilmenge einer Potenzmenge (Menge von Teilmengen, $\mathcal{A}\subseteq\mathcal{P}(\Omega)$) heißt $\sigma$-Algebra wenn sie folgende Bedingungen erfüllt:
-\begin{itemize}
-	\item Die Teilmenge $\mathcal{A}$ der Potenzmenge $\mathcal{P}(\Omega)$ enthält die Grundmenge $\Omega$.
-	\item Das Komplement $A^\mathrm{C}$ eines Elements der Teilmenge $A \in\mathcal{A}$ ist gleich der Differenz aus Grundmenge und Element $A^\mathrm{C} := \Omega\setminus A$. Stabilität des Komplements.
-	\item Sind die Mengen in der Teilmenge der Potenzmenge $A_1,A_2,A_3,... \in \mathcal{A}$ enthalten, so ist auch die Vereinigung aller Mengen in der Teilmenge der Potenzmenge enthalten $\bigcup\limits_{n\epsilon \mathbb{N}}A_n \in \mathcal{A}$
-	\item Alle vorangegangenen Mengenoperationen können auf die Teilmengen angewendet werden. 
-\end{itemize}
+\subsubsection{Unabhängige Ereignisse}
+Zwei Ereignisse heißen \textbf{unabhängig} wenn gilt: 
+\begin{equation*}
+	P(A\cap B) = P(A) \cdot P(B)
+\end{equation*}
+Sie heißen \textbf{abhängig} wenn sie nicht unabhängig sind.\\
+Für unabhängige Ereignisse gilt:
+\begin{equation*}
+	P(A) = \frac{P(A\cap B)}{P(B)} \text{\quad bzw. \quad} P(B)=\frac{P(A\cap B)}{P(A)}
+\end{equation*} 
 \subsection{Axiome der Wahrscheinlichkeitsrechnung}
 Die Funktion $P$ ordnet jedem Ereignis $A$ eine Wahrscheinlichkeit $P(A)$ zu.
 \begin{enumerate}
@@ -204,100 +218,158 @@ Die Funktion $P$ ordnet jedem Ereignis $A$ eine Wahrscheinlichkeit $P(A)$ zu.
 \subsection{Laplace Experiment}
 Endlich viele Elementarereignisse welche alle gleich wahrscheinlich sind.\\
 Satz von Laplace:
-\begin{equation}
+\begin{equation*}
 	P(A) = \frac{|A|}{|\Omega|}=\frac{\text{Anzahl der Elementarereignisse in $A$}}{\text{Anzahl aller möglichen Elementarereignisse}}
-\end{equation}
-\subsection{Unabhängige Ereignisse}
-Zwei Ereignisse heißen \textbf{unabhängig} wenn gilt: 
-\begin{equation}
-	P(A\cap B) = P(A) \cdot P(B)
-\end{equation}
-Sie heißen \textbf{abhängig} wenn sie nicht unabhängig sind.\\
-Für unabhängige Ereignisse gilt:
-\begin{equation}
-	P(A) = \frac{P(A\cap B)}{P(B)} \text{\quad bzw. \quad} P(B)=\frac{P(A\cap B)}{P(A)}
-\end{equation} 
+\end{equation*}
 \subsection{Bedingte Wahrscheinlichkeit}
 "Wahrscheinlichkeit von A gegeben B".
-\begin{equation}
+\begin{equation*}
 	P(A|B) := \frac{P(A\cap B)}{P(B)}
-\end{equation}
+\end{equation*}
 Sind $A, B \subset \Omega$ \textbf{unabhängige} Ereignisse gilt:
-\begin{equation}
+\begin{equation*}
 	P(A|B) = P(A)
-\end{equation}
+\end{equation*}
 Sind $A, B \subset \Omega$ \textbf{abhängige} Ereignisse gilt:
-\begin{equation}
+\begin{equation*}
 	P(A|B) \neq P(A)
-\end{equation}
-\subsection{Multiplikationssatz}
-\begin{equation}
+\end{equation*}
+\subsubsection{Multiplikationssatz}
+\begin{equation*}
 	P(A\cap B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B)
-\end{equation}
-\subsection{Satz der totalen Wahrscheinlichkeit}
+\end{equation*}
+\subsubsection{Satz der totalen Wahrscheinlichkeit}
 Der Ergebnisraum ist gegeben durch $\Omega = \bigcup\limits_{j=1}^\infty B_j$ mit $P(B_j)>0$ und alle $j$ sind paarweise Disjunkt $B_i \cap B_j = \emptyset$ für $i\neq j$
-\begin{equation}
+\begin{equation*}
 	P(A) = \sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)
-\end{equation}
+\end{equation*}
 Für den Spezialfall $\Omega = B\cup B^C$ gilt:
-\begin{equation}
+\begin{equation*}
 	P(A) = P(B) \cdot P(A|B) + P(B^C) \cdot P(A|B^C)
-\end{equation}
-\subsection{Satz von Bayes}
+\end{equation*}
+\subsubsection{Satz von Bayes}
 Besteht aus dem Multiplikationssatz \& der totalen Wahrscheinlichkeit:
-\begin{equation}
+\begin{equation*}
 	P(A|B)=\frac{P(A)\cdot P(B|A)}{P(B)}= \frac{P(A)\cdot P(B|A)}{P(A)\cdot P(B|A) + P(A^C)\cdot P(B|A^C)}
-\end{equation}
+\end{equation*}
 \subsection{Zufallsvariablen}
 Eine Zufallsvariable ist eine Abbildung des Ergebnisraums auf den reellen Zahlenraum $\Omega\longmapsto\mathbb{R}$. Die Zufallsvariable ordnet jedem Elementarereignis eine reelle Zahl zu.\\
 Zwei Zufallsvariablen sind \textbf{unabhängig} wenn gilt:
-\begin{equation}
+\begin{equation*}
 	P(X\in A, Y\in B) = P(X\in A) \cdot P(Y\in B) \text{\quad für alle\quad} A,B\subset \mathbb{R} 
-\end{equation}
-Die Zufallsvariablen heißen \textbf{abhängig} wenn sie nicht unabhängig sind.\\
+\end{equation*}
+Die Zufallsvariablen heißen \textbf{abhängig} wenn sie nicht unabhängig sind.
+\subsubsection{Diskrete Zufallsvariable}
 Die Zufallsvariable wird \textbf{diskret} genannt wenn sie nur endlich viele oder abzählbar unendlich viele Werte annimmt. Es gilt:
-\begin{equation}
+\begin{equation*}
 	\sum\limits_{i=1}^\infty P(X=x_i)=1
-\end{equation}
-\subsection{Wahrscheinlichkeitsfunktion}
+\end{equation*}
+\subsubsection{Wahrscheinlichkeitsfunktion}
 Für die diskrete Zufallsvariable $X$ und ihre Ausprägungen lautet die Wahrscheinlichkeitsfunktion:
-\begin{equation}
+\begin{equation*}
 	p_X(x):=
 	\begin{cases}
 		P(X=x_i) \text{, für } x = x_i \text{ mit Zählindex } i \in \mathbb{N}\\
 		0 \text{, sonst}
 	\end{cases}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 	\sum\limits_{x_i}p_X(x_i)=1=p(\Omega)
-\end{equation}
-\subsection{Verteilungsfunktion diskreter Zufallsvariablen}
+\end{equation*}
+\subsubsection{Verteilungsfunktion diskreter Zufallsvariablen}
 Für die diskrete Zufallsvariable $X$ und ihre Ausprägungen lautet die Verteilungsfunktion:
-\begin{equation}
+\begin{equation*}
 	F_X(x):=P(X\leq x)=\sum_{x_i\leq x}P(X=x_i)=\sum_{x_i\leq x}p_X(x_i)
-\end{equation}
-\subsection{Stetige Zufallsvariable}
+\end{equation*}
+\subsubsection{Stetige Zufallsvariable}
 Eine zuvallsvariable wird \textbf{stetig} genannt, wenn es eine nicht-negative Funktion $f_X\geq 0$ mit 
-\begin{equation}
+\begin{equation*}
 	\int\limits_{-\infty}^\infty f_X(x) dx = 1
-\end{equation}
+\end{equation*}
 gibt, so dass für alle $a,b \in \mathbb{R} \cup \{-\infty, \infty\}$ mit $a\leq b$ gilt:
-\begin{equation}
+\begin{equation*}
 	P(X\in [a,b]) = P(a\leq X \leq b) = \int\limits_a^b f_X(x)dx
-\end{equation}
+\end{equation*}
 $f_X$ wird als \textbf{Dichtefunktion} (Wahrscheinlichkeitsdichte) der Zufallsvariable $X$ bezeichnet.
 Ihre Verteilungsfunktion $F_X$ lautet:
-\begin{equation}
+\begin{equation*}
 	F_X(x):=P(X\leq x) = \int\limits_{-\infty}^x f_X(u)du
-\end{equation}
+\end{equation*}
 Außerdem gilt:
-\begin{equation}
+\begin{equation*}
 	f_X = F'_X
-\end{equation}
+\end{equation*}
 Daraus folgt:
-\begin{equation}
+\begin{equation*}
 	P(X\in [a,b]) = P(a\leq X \leq b) = \int\limits_a^b f_X(x)dx = F_X(b) - F_X(a)
-\end{equation}
+\end{equation*}
+\subsubsection{Symmetrische Zufallsvariable}
+Eine Zufallsvariable $X$ wird \textbf{symmetrisch} genannt, wenn es eine Symmetrieachse $c \in \mathbb{R}$ gibt, so dass für alle $d\in\mathbb{R}$ gilt:
+\begin{itemize}
+	\item für diskrete Zufallsvariablen 
+	\begin{equation*}
+		P(X=c-d) = P(X=c+d)
+	\end{equation*}
+	\item für stetige Zufallsvariablen
+	\begin{equation*}
+		f_X(c-d)=f_X(c+d)
+	\end{equation*}
+\end{itemize}
+\subsubsection{Mehrdimensionale Verteilungsfunktion}
+Die \textbf{Verteilungsfunktion} einer zweidimensionalen Zufallsveriablen $Z = (X_1,...,X_n)$ wird definiert durch:
+\begin{equation*}
+	F_Z(x_1,...,y)=P(X_1\leq x_1,..., X_n\leq x_n).
+\end{equation*}
+\subsubsection{Rand-Verteilungsfunktion}
+Als Rand-Verteilungsfunktion einer mehrdimensionalen Zufallsvariablen $Z=(X_1,...,X_n)$ wird diejenige Funktion bezeichnet welche lediglich eine dimension betrachtet.
+\begin{equation*}
+	F_{X_i}(x_i)=F_Z(\infty,...,\infty,x_i,\infty,...,\infty)
+\end{equation*}
+Für die zweidimensionale Rand-Verteilungsfunktion ($Z=(X,Y)$, $F_Z(x,y)$) gilt:
+\begin{equation*}
+	F_X(x)=F_Z(x,\infty) \text{ sowie } F_Y(y) = F_Z(\infty,y)
+\end{equation*}
+\subsubsection{Totale Wahrscheinlichkeit}
+\begin{equation*}
+	f_X(x) = \int f_{X,Y}(x,y)dy = \int f_Y(y) \cdot f_X(x|Y=y) dy
+\end{equation*}
+Mit dieser Formel lässt sich eine Rand-Dichte aus einer gemeinsamen Dichte bestimmen, dies wird als \textbf{Marginalisierung} bezeichnet.
+\subsubsection{Erwartungswert einer Zufallsvariable}
+Für eine diskrete Zufallsvariable mit $(x_i)_{i\in \mathbb{N}}$ Ausprägungen und Wahrscheinlichkeitsfunktion $p_X$ lautet der \textbf{Erwartungswert}:
+\begin{equation*}
+	E(X):=\sum\limits_{i=1}^\infty x_i\cdot p_X(x_i)
+\end{equation*}
+Für eine stetige Zufallsvariable mit Dichte $f_X$ lautet der Erwartungswert:
+\begin{equation*}
+	E(X):=\int\limits_{-\infty}^\infty x\cdot f_X(x) dx
+\end{equation*}
+\subsubsection{Transformationen von Zufallsvariablen}
+\begin{itemize}
+	\item Linearität:
+	\begin{equation*}
+		E(a\cdot X + b\cdot Y)=a\cdot E(X)+b\cdot E(Y)
+	\end{equation*}
+	\item Multiplikation:
+	\begin{equation*}
+		E(X\cdot Y) = E(X)\cdot E(Y)
+	\end{equation*}
+\end{itemize}
+\subsubsection{Varianz einer Zufallsvariable}
+Eine Zufallsvariable mit Erwartungswert $\mu = E(X)$ hat die \textbf{Varianz}:
+\begin{equation*}
+	\sigma^2(X):=E[(X-\mu)^2]=E(X^2)-\mu^2
+\end{equation*}
+Die Standartabweichung lautet:
+\begin{equation*}
+	\sigma(X) = \sqrt{\sigma^2(X)}
+\end{equation*}
+\subsubsection{Grenzwertsatz von Zufallsvariablen}
+Für $X_1,...,X_n$ unabhängige und identisch verteilte Zufallsvariablen mit $E(X_i)=\mu$, $\sigma(X_i)=\sigma$ und $\overline{X}:=\frac{1}{n}(X_1+...+X_n)$ gilt:
+\begin{align*}
+	E(\overline{X})=\mu \\
+	\sigma^2(\overline{X})=\frac{\sigma^2}{n}\\
+	\sigma(X)=\frac{\sigma}{\sqrt{n}}
+\end{align*}
 \subsection{Quantil}
 Bezeichnet das kleinste $x$ mit $F_X(x)\geq p$. \\
 Spezielle Quantile sind:
@@ -306,89 +378,23 @@ Spezielle Quantile sind:
 	\item $x_{0.25}, x_{0.5}, x_{0.75}$ erstes, zweites und drittes Quantil
 	\item $x_{0.01}, x_{0.02}, x_{0.03}, ...$ erstes, zweites, drittes, ... Perzentil
 \end{itemize}
-\subsection{Symmetrische Zufallsvariable}
-Eine Zufallsvariable $X$ wird \textbf{symmetrisch} genannt, wenn es eine Symmetrieachse $c \in \mathbb{R}$ gibt, so dass für alle $d\in\mathbb{R}$ gilt:
-\begin{itemize}
-	\item für diskrete Zufallsvariablen 
-	\begin{equation}
-		P(X=c-d) = P(X=c+d)
-	\end{equation}
-	\item für stetige Zufallsvariablen
-	\begin{equation}
-		f_X(c-d)=f_X(c+d)
-	\end{equation}
-\end{itemize}
-\subsection{Mehrdimensionale Verteilungsfunktion}
-Die \textbf{Verteilungsfunktion} einer zweidimensionalen Zufallsveriablen $Z = (X_1,...,X_n)$ wird definiert durch:
-\begin{equation}
-	F_Z(x_1,...,y)=P(X_1\leq x_1,..., X_n\leq x_n).
-\end{equation}
-\subsection{Rand-Verteilungsfunktion}
-Als Rand-Verteilungsfunktion einer mehrdimensionalen Zufallsvariablen $Z=(X_1,...,X_n)$ wird diejenige Funktion bezeichnet welche lediglich eine dimension betrachtet.
-\begin{equation}
-	F_{X_i}(x_i)=F_Z(\infty,...,\infty,x_i,\infty,...,\infty)
-\end{equation}
-Für die zweidimensionale Rand-Verteilungsfunktion ($Z=(X,Y)$, $F_Z(x,y)$) gilt:
-\begin{equation}
-	F_X(x)=F_Z(x,\infty) \text{ sowie } F_Y(y) = F_Z(\infty,y)
-\end{equation}
-\subsection{Totale Wahrscheinlichkeit}
-\begin{equation}
-	f_X(x) = \int f_{X,Y}(x,y)dy = \int f_Y(y) \cdot f_X(x|Y=y) dy
-\end{equation}
-Mit dieser Formel lässt sich eine Rand-Dichte aus einer gemeinsamen Dichte bestimmen, dies wird als \textbf{Marginalisierung} bezeichnet.
-\subsection{Erwartungswert einer Zufallsvariable}
-Für eine diskrete Zufallsvariable mit $(x_i)_{i\in \mathbb{N}}$ Ausprägungen und Wahrscheinlichkeitsfunktion $p_X$ lautet der \textbf{Erwartungswert}:
-\begin{equation}
-	E(X):=\sum\limits_{i=1}^\infty x_i\cdot p_X(x_i)
-\end{equation}
-Für eine stetige Zufallsvariable mit Dichte $f_X$ lautet der Erwartungswert:
-\begin{equation}
-	E(X):=\int\limits_{-\infty}^\infty x\cdot f_X(x) dx
-\end{equation}
-\subsection{Transformationen von Zufallsvariablen}
-\begin{itemize}
-	\item Linearität:
-	\begin{equation}
-		E(a\cdot X + b\cdot Y)=a\cdot E(X)+b\cdot E(Y)
-	\end{equation}
-	\item Multiplikation:
-	\begin{equation}
-		E(X\cdot Y) = E(X)\cdot E(Y)
-	\end{equation}
-\end{itemize}
-\subsection{Varianz einer Zufallsvariable}
-Eine Zufallsvariable mit Erwartungswert $\mu = E(X)$ hat die \textbf{Varianz}:
-\begin{equation}
-	\sigma^2(X):=E[(X-\mu)^2]=E(X^2)-\mu^2
-\end{equation}
-Die Standartabweichung lautet:
-\begin{equation}
-	\sigma(X) = \sqrt{\sigma^2(X)}
-\end{equation}
-\subsection{Grenzwertsatz von Zufallsvariablen}
-Für $X_1,...,X_n$ unabhängige und identisch verteilte Zufallsvariablen mit $E(X_i)=\mu$, $\sigma(X_i)=\sigma$ und $\overline{X}:=\frac{1}{n}(X_1+...+X_n)$ gilt:
-\begin{align}
-	E(\overline{X})=\mu \\
-	\sigma^2(\overline{X})=\frac{\sigma^2}{n}\\
-	\sigma(X)=\frac{\sigma}{\sqrt{n}}
-\end{align}
+
 \section{Zusatz}
 \subsection{Integration}
-\begin{equation}
+\begin{equation*}
 	\int\limits_{a}^{b}f(x) dx = [F(x)]_a^b = F(b) - F(a)
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 	\int\limits_{a}^{b}f(x) + g(x) dx = \int\limits_{a}^{b}f(x) dx + \int\limits_{a}^{b}g(x) dx
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 	\int\limits_{a}^{b}c\cdot f(x) dx = c\cdot \int\limits_{a}^{b}f(x) dx
-\end{equation}
+\end{equation*}
 \subsection{Partielle Integration}
-\begin{equation}
+\begin{equation*}
 	u(x)\cdot v(x) = \int u'(x) \cdot v(x) dx + \int u(x) \cdot v'(x) dx
-\end{equation}
-\todo{Basics Integration}
+\end{equation*}
+\todo{Integrations regeln}
 \subsection{Differentialgleichungen}
 \todo{Basics DGL Lösungen}
 \newpage
