@@ -16,6 +16,7 @@
 \usepackage{adjustbox}
 \usepackage{color, colortbl}
 \usepackage{array}
+\usepackage{diagbox}
 \usepackage[
     backend=biber,		
     bibwarn=true,
@@ -95,16 +96,16 @@
 \section{Statistik}
 \subsection{Arithmetisches Mittel}
 \begin{equation*}
-	\overline{x} := \frac{x_1 + ... + x_n}{n} = \frac{1}{n}\sum_{i=1}^{n}{x_i}
+	\bar{x} := \frac{x_1 + ... + x_n}{n} = \frac{1}{n}\sum_{i=1}^{n}{x_i}
 \end{equation*}
 \subsection{Mittlerer Abstand}
 Der mittlere Abstand wird nicht sehr häufig verwendet, da das Rechnen mit Beträgen sehr mühsam ist. Die Varianz (durchschnittliche quadratische Abweichung) eignet sich besser.
 \begin{equation*}
-	\frac{1}{n}\sum_{i=1}^{n}{|x_i-\overline{x}|}
+	\frac{1}{n}\sum_{i=1}^{n}{|x_i-\bar{x}|}
 \end{equation*}
 \subsection{Varianz}
 \begin{equation*}
-	s_x^2= \frac{1}{n-1}\sum_{i=1}^n{(x_i-\overline{x})^2}
+	s_x^2= \frac{1}{n-1}\sum_{i=1}^n{(x_i-\bar{x})^2}
 \end{equation*}
 \subsection{Standartabweichung}
 \begin{equation*}
@@ -112,7 +113,7 @@ Der mittlere Abstand wird nicht sehr häufig verwendet, da das Rechnen mit Betr�
 \end{equation*}
 \subsection{Kovarianz}
 \begin{equation*}
-	y_{xy}:=\frac{1}{n-1}\sum_{i=1}^n(x_i-\overline{x})(y_i-\overline{y})
+	y_{xy}:=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})
 \end{equation*}
 \subsection{Korrelationskoeffizient}
 \begin{equation*}
@@ -126,13 +127,13 @@ Der mittlere Abstand wird nicht sehr häufig verwendet, da das Rechnen mit Betr�
 	b = \frac{s_{xy}}{s_x^2}
 \end{equation*}
 \begin{equation*}
-	a = \overline{y} - b\overline{x}
+	a = \bar{y} - b\bar{x}
 \end{equation*}
 \subsection{Bestimmtheitsmaß}
 \begin{equation*}
-	R^2 = \frac{\sum_{i=1}^n (\hat{y}_i-\overline{y})^2}{\sum_{i=1}^n (y_i-\overline{y})^2} = \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i-\overline{y})^2}
+	R^2 = \frac{\sum_{i=1}^n (\hat{y}_i-\bar{y})^2}{\sum_{i=1}^n (y_i-\bar{y})^2} = \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i-\bar{y})^2}
 \end{equation*}
-mit Arithmetischem Mittel $\overline{y}$ und Ausgleichsgerade $\hat{y}_i = y(x_i) = a+bx_i$.
+mit Arithmetischem Mittel $\bar{y}$ und Ausgleichsgerade $\hat{y}_i = y(x_i) = a+bx_i$.
 \begin{equation*}
 	R^2 = r_{xy}^2
 \end{equation*}
@@ -371,10 +372,10 @@ Die Standartabweichung lautet:
 	\sigma(X) = \sqrt{\sigma^2(X)}
 \end{equation*}
 \subsubsection{Grenzwertsatz von Zufallsvariablen}
-Für $X_1,...,X_n$ unabhängige und identisch verteilte Zufallsvariablen mit $E(X_i)=\mu$, $\sigma(X_i)=\sigma$ und $\overline{X}:=\frac{1}{n}(X_1+...+X_n)$ gilt:
+Für $X_1,...,X_n$ unabhängige und identisch verteilte Zufallsvariablen mit $E(X_i)=\mu$, $\sigma(X_i)=\sigma$ und $\bar{X}:=\frac{1}{n}(X_1+...+X_n)$ gilt:
 \begin{gather*}
-	E(\overline{X})=\mu \\
-	\sigma^2(\overline{X})=\frac{\sigma^2}{n}\\
+	E(\bar{X})=\mu \\
+	\sigma^2(\bar{X})=\frac{\sigma^2}{n}\\
 	\sigma(X)=\frac{\sigma}{\sqrt{n}}
 \end{gather*}
 \subsection{Quantil}
@@ -477,7 +478,7 @@ Für eine Normalverteilung $X\sim N(\mu,\sigma^2)$ mit $\alpha\in\mathbb{R}^+$ g
 \begin{equation*}
 	P(\mu-\alpha<X<\mu+\alpha)=2\Phi\left(\frac{\alpha}{\sigma}\right)-1
 \end{equation*}
-Wenn nun $p\in[0,1]$ liegt und $\overline{x}$ mit $\Phi(\overline{x})=\frac{p+1}{2}$ ist, so gilt mit $\alpha=\sigma\cdot\overline{x}$:
+Wenn nun $p\in[0,1]$ liegt und $\bar{x}$ mit $\Phi(\bar{x})=\frac{p+1}{2}$ ist, so gilt mit $\alpha=\sigma\cdot\bar{x}$:
 \begin{equation*}
 	P(\mu-\alpha<X\mu+\alpha)=p
 \end{equation*}
@@ -487,6 +488,60 @@ Daher gilt, dass
 	\item $P(\mu-2\sigma\leq X\leq\mu+2\sigma)\approx 0.95$
 	\item $P(\mu-3\sigma\leq X\leq\mu+3\sigma)\approx 0.9975$
 \end{itemize}
+\subsection{Zentraler Grenzwertsatz}
+Für $X_1,X_2,X_3,...,X_n$ unabhängig und identisch verteile Zufallsvariablen mit $E(X_i)=\mu$ und $\sigma(X_i)=\sigma$ für $i=1,...,n$ und $\bar{X}:=\frac{1}{n}\sum_{i=1}^nX_i$ gilt:
+\begin{gather*}
+	Z_n:=\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\rightarrow N(0,1)\\
+	\lim_{n\rightarrow\infty}P(Z_n\leq x)=\Phi(x)
+\end{gather*}
+Für Daten unabhängiger, identischer Zufallsexperimente ist deren Mittelwert annäherned normalverteilt. Deren Erwartungswert und Standartabweichung lässt sich einfach empirisch bestimmen. 
+\subsection{Hypothesentests}
+\begin{itemize}
+	\item \textbf{Nullhypothese} $H_0$: Annahme über ein erwartetes $\mu$
+	\item \textbf{Alternativhypothese} $H_1$: Gegenereignis zu $H_0$ 
+	\item Möglichkeiten der Hypothesen (Test eines Parameters $\theta$):\\
+			\begin{tabular}{|l|l|l|}
+				\hline
+				Nullhypothese $H_0$ & Alternativhypothese $H_1$ & Art\\\hline
+				$\theta = \theta_0$ & $\theta \neq \theta_0$ & zweiseitig\\\hline
+				$\theta \leq \theta_0$ & $\theta > \theta_0$ & einseitig\\\hline
+				$\theta \geq \theta_0$ & $\theta < \theta_0$ & einseitig\\\hline
+			\end{tabular}
+	\item Fehlerarten:\\
+			\begin{tabular}{|l|c|c|}
+				\hline
+				\diagbox{Entscheidung}{Ground Truth}&$H_0$ ist wahr & $H_1$ ist wahr\\\hline
+				Annahme von $H_0$ & richtig entschieden & Fehler zweiter Art \\\hline
+				Ablehnung von $H_0$  & Fehler erster Art & richtig entschieden\\\hline
+ 			\end{tabular}
+ 	\item Annahme oder ablehnung von $H_0$:
+ 	\begin{itemize}
+ 		\item \textbf{Ablehung von} $H_0$: Abweichung zwischen Prüfgröße und Annahme ist signifikant. Somit wird die Nullhypothese $H_0$ verworfen, bzw. die Alternativhypothese $H_1$ - mit einer Irrtumswahrscheilichkeit von $\alpha$ angenommen.
+ 		\item \textbf{Annahme von } $H_0$: Es spricht nichts gegen eine Ablehnung/Verwerfung von $H_0$ damit wird diese Angenommen. 
+ 	\end{itemize}
+\end{itemize}
+Vorgehen zum aufstellen eines Hypothesentests:
+\begin{enumerate}
+	\item Aufstellen der Nullhypothese $H_0$ und Alternativhypothese $H_1$
+	\item Festlegen des Signifikanzniveaus $\alpha$ (Wahrscheinlichkeit für einen Fehler erster Art)
+	\item Berechnung des Streubereichs zum Signifikanzniveau $\alpha$
+	\item Erhebung einer Stichbrube und berechnen der zugehörigen Prüfgröße
+	\item Entscheidung über die Ablehnung oder Annahme von $H_0$
+\end{enumerate}
+\subsubsection{Hypothesentests bei Normalverteilungen}
+Streubereiche für Normalverteilungen:\\
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{$H_0$} & \textbf{$H_1$} & \textbf{Streubreich}\\\hline
+	$\mu=\mu_0$ & $\mu\neq\mu_0$ & $\left[\mu_0-z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}, \mu_0+z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}\right]$\\\hline
+	$\mu\geq\mu_0$ & $\mu<\mu_0$ & $\left[\mu_0-z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}, \infty\right)$\\\hline
+	$\mu\leq\mu_0$ & $\mu>\mu_0$ & $\left(-\infty, \mu_0+z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}\right]$\\\hline
+\end{tabular}\\
+Für eine Stichprobe $x_1,...,x_n$ von $X$ mit $\bar{x}=\frac{1}{n}\sum_{i=1}^nx_i$ gilt:
+\begin{gather*}
+	\bar{x}\in \text{ Streubereich }\Rightarrow H_0 \text{ wird akzeptiert}\\
+	\bar{x}\notin \text{ Streubereich }\Rightarrow H_0 \text{ wird abgelehnt}
+\end{gather*}
 \section{Zusatz}
 \subsection{Integration}
 \begin{equation*}
