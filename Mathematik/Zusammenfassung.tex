@@ -17,6 +17,7 @@
 \usepackage{color, colortbl}
 \usepackage{array}
 \usepackage{diagbox}
+\usepackage{trfsigns}
 \usepackage[
     backend=biber,		
     bibwarn=true,
@@ -542,6 +543,227 @@ Für eine Stichprobe $x_1,...,x_n$ von $X$ mit $\bar{x}=\frac{1}{n}\sum_{i=1}^nx
 	\bar{x}\in \text{ Streubereich }\Rightarrow H_0 \text{ wird akzeptiert}\\
 	\bar{x}\notin \text{ Streubereich }\Rightarrow H_0 \text{ wird abgelehnt}
 \end{gather*}
+\section{Fourierreihen}
+\subsection{Gleichanteil / Mittelwert}
+\begin{equation*}
+	m=\frac{\text{Integral über eine Periode}}{\text{Periode}}=\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(t)dt
+\end{equation*}
+\subsection{Trigonometrisches Polynom}
+Darstellung einer Funktion durch ein Vielfaches aus Sinus und Kosinus mit unterschiedlichen vielfachen an Kreisfrequenzen.
+\begin{equation*}
+	p_n(t)=\frac{a_0}{2}+\sum\limits_{k=1}^n(a_kcos(k\omega t)+b_ksin(k\omega t)), \quad \omega=\frac{2\pi}{T}
+\end{equation*}
+Man nennt diese Funktion \textbf{trigonometrisches Polynom} vom Grad $n$. $a_0,a_1,...,a_n$ und $b_1,...,b_n$ sind beliebige Zahlen, mit $a_n, b_n \neq 0$.\\
+Für jede Funktion $f(t)$ mit Periode $T>0$ lässt sich als Fourierreihe darstellen.\\
+Die Fourierreihe konvergiert
+\begin{enumerate}
+	\item gleichmäßig (gleicher Fehler an allen Stellen) gegen $f$ wenn $f$ stetig (ohne Sprungstellen) und abschnittsweise stetig differenzierbar ist,
+	\item punktweise gegen $\frac{1}{2}(f(t+0)+f(t-0)$, das arithmetische Mittel aus links- und rechtsseiteigem Grenzwert, wenn $f$ aus endlich vielen stetigen Abschnitten besteht (mit Sprungstellen),
+	\item und somit konvergiert sie in den abgeschlossenen Intervallen in denen $f$ stetig ist - dort sogar gleichmäßig.
+\end{enumerate}
+\subsection{Berechnung der Fourierkoeffizienten}
+\begin{gather*}
+	a_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)cos(k\omega t)dt, \quad k=1,2,...\\
+	b_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)sin(k\omega t)dt, \quad k=1,2,...\\
+\end{gather*}
+Für periodische \textbf{stetige Funktionen Konvergiert} die Fourierreihe schnell, da ihre Koeffizienten $a_k,b_k$ zu $1/k^2$ proportional abklingen. Für Funktionen mit Sprungstellen klingen sie nur zu $1/k$ proportional ab.
+\subsection{Gibbs'sches Phänomen}
+Bei z.B. nachbildung einer Rechteckfunktion mittels der Fourierreihe bleibt ein Überschwinger kurz nach der Flanke von $\sim 9\%$ bestehen (und auch nicht entfernen).
+\subsection{Komplexe Fourierreihe}
+Darstellung einer Funktion $f$ mit Periode $T$ als unendliche Summe heißt \textbf{komplexe Fourierreihe}
+\begin{equation*}
+	f(t) = \sum\limits_{k=-\infty}^{\infty}c_ke^{ik\omega t}, \quad \omega=\frac{2\pi}{T}
+\end{equation*}
+Der zusammenhang zwischen der \textbf{komplexen Fourrierkoeffizienten} zu den reellen Fourierkoeffizienten besteht aus:
+\begin{gather*}
+	a_0=2\Re(c_0), \quad c_0=\frac{a_0}{2}\\
+	a_k=2\Re(c_k), \quad c_k=\frac{a_k-ib_k}{2}, \quad k=1,2,3,...\\
+	b_k=-2\Im(c_k), \quad c_k=\frac{a_k+ib_k}{2}, \quad k=-1,-2,-3,...
+\end{gather*}
+\subsection{Berechnung komplexer Fourierkoeffizienten}
+\begin{equation*}
+	c_k=\frac{1}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)e^{-ik\omega t}dt, \quad k=0,\pm1,\pm2,...
+\end{equation*}
+\subsection{Ähnlichkeit, Zeitumkehr und Zeitverschiebung}
+\begin{itemize}
+	\item \textbf{Ähnlichkeit}:\\
+			Die Funktionen $f(t)$ und $\tilde{f}(t)=f(at)$ haben dieselben Fourierkoeffizienten. Die beiden Fourierreihen haben lediglich unterschiedliche Perioden und Kreisfrequenzen.
+	\item \textbf{Zeitumkehr}:\\
+			Die Funktionen $f(t)$ und $\tilde{f}(t)=f(-t)$ haben dieselbe Periode $T$ und Kreisfrequenz $\omega$. Zwischen den Fourierkoeffizienten, Spektrum und Phase besteht der Zusammenhang:
+			\begin{equation*}
+				\tilde{a_k}=a_k,\tilde{b_k}=-b_k,\tilde{c_k}=\overline{c_k},\tilde{A_k}=A_k,\tilde{\varphi_k}=\varphi_k, 
+			\end{equation*}
+	\item\textbf{Zeitumkehr}:\\
+			Die Funktionen $f(t)$ und $\tilde{f}(t)=f(t-t_0)$ haben dieselben Anplituden $\tilde{A_k}=A_k$ und Phasenwinkel $\tilde{\varphi_k}=-k\omega t_0 + \varphi_k$
+\end{itemize}
+\section{Verallgemeinerte Funktionen}
+\subsection{Heavisiede-Funktion}
+\begin{equation*}
+	\sigma(t)=\begin{cases}
+		0 \text{ für } t<0\\
+		1 \text{ für } t\geq 1
+	\end{cases}
+\end{equation*}
+\subsection{Rechteckpuls}
+\begin{equation*}
+	r(t)=\sigma(t-t_0)-\sigma(t-t_1)
+\end{equation*}
+Der Rechteckpuls lässt die Funktion $f$ außerhalb des Intervalls $[t_0,t_1]$ ausblenden, was zu einer neuen Funktion $g(t)$ führt:
+\begin{equation*}
+	g(t):=f(t)r(t)=\begin{cases}
+		0 \text{ für } t<t_0\\
+		f(t) \text{ für } t_0\leq t \leq t_1\\
+		0 \text{ für } t>t_1
+	\end{cases}
+\end{equation*}
+\subsection{Dirac-Puls}
+Die Rechteckfunktion $d_\varepsilon$ mit konstantem Flächeninhalt 1:
+\begin{equation*}
+	d_\varepsilon=\frac{1}{\varepsilon}(\sigma(t)-\sigma(t-\varepsilon))
+\end{equation*}
+Wird im Grenzwert zum \textbf{Dirac-Puls}/\textbf{Dirac-Distribution}:
+\begin{equation*}
+	\delta(t)=\lim_{\varepsilon\rightarrow 0}d_\varepsilon(t)
+\end{equation*}
+Wenn man eine Funktion $f$ mit dem Dirac-Puls $\delta(t-t0)$ multipliziert, so werden alle Funktionswerte außerhalb $t_0$ ausgeblendet.
+\begin{gather*}
+	\int_{-\infty}^{\infty}f(t)\delta(t-t_0)dt=f(t_0)\\
+	\int_{-\infty}^{\infty}\delta(t-t_0)dt=1
+\end{gather*}
+Die \textbf{varallgemeintere Ableitung} der Heaviside-Funktion ist der Dirac-Puls:
+\begin{gather*}
+	\dot{\sigma}(t)=\delta(t)\\
+	\int\delta(t)dt=\sigma(t)+C
+\end{gather*}
+\subsection{Faltung}
+\begin{equation*}
+	h(t) = f(t)\star g(t)=\int_{-\infty}^\infty f(\tau)g(t-\tau)d\tau
+\end{equation*}
+Rechenregeln (mit Funktionen $f,g,h$ und Konstante $C$):
+\begin{itemize}
+	\item $f\star g = g\star f$
+	\item $C(f\star g) = (Cf)\star g=f\star (Cg)$
+	\item $f\star (g\star h)=(f\star g)\star h$
+	\item $f\star (g + h)=(f\star g) + (f\star h)$
+\end{itemize}
+Eine Faltung einer Funktion $f$ mit dem Dirac-Puls $\delta$ lässt die Funktion $f$ unverändert.\\
+\subsection{Einseitige Faltung}
+Sind beide Funktionen $f$ und $g$ für negative Argumente null, dann berechnet sich die einseitige Faltung durch:
+\begin{equation*}
+	f(t)\star g(t)=\int_0^tf(\tau)g(t-\tau)d\tau
+\end{equation*}
+\section{Fouriertransformation}
+Durch die Fouriertransformation wird einer Funktion $s$ im Zeitbereich eine Funktion $S$ im Frequenzbereich zugeordnet.
+\begin{equation*}
+	s(t)\laplace S(f)=\int_{-\infty}^\infty s(t)e^{-2\pi ift}dt
+\end{equation*}
+Eigenschaften:
+\begin{itemize}
+	\item \textbf{Linearität}:\\
+			Eine Addition von Funktionen im Zeitbereich entspricht einer Addition der Fouriertransformierten im Frequenzbereich.\\
+			Eine Multiplikation einer Funktion mit einem konstanten Faktor im Zeitbereich entspricht der Multiplikation mit demselben Faktor im Frequenzbereich.
+			\begin{eqnarray*}
+				s_1(t),s_2(t) & \laplace & S_1(f),S_2(f)\\
+				\downarrow & & \downarrow \\
+				C_1s_1(t)+C_2s_2(t) & \laplace & C_1S_1(f)+C_2S_2(f)
+			\end{eqnarray*}
+	\item \textbf{Zeitverschiebung}:\\
+			Eine Verschiebung der Funktion $s$ um $t_0$ im Zeitbereich entspricht der Multiplikation mit $e^{-i2\pi ft_0}$ im Frequenzbereich.
+			\begin{eqnarray*}
+				s(t) & \laplace & S(f)\\
+				\downarrow & & \downarrow \\
+				s(t-t_0) & \laplace & e^{-i2\pi ft_0}S(f)
+			\end{eqnarray*}
+	\item \textbf{Frequenzverschiebung}:\\
+			Eine Verschiebung der Funktion $S$ um $f_0$ im Frequenzbereich entspricht der Multiplikation mit $e^{-2\pi f_0 t}$ im Zeitbereich.
+			\begin{eqnarray*}
+				S(f) & \Laplace & s(t)\\
+				\downarrow & & \downarrow \\
+				S(f-f_0) & \Laplace & e^{-i2\pi f_0t}s(t)
+			\end{eqnarray*}
+\end{itemize}
+\subsection{Fouriertransformation einer nicht abklingenden Funktion}
+\todo{Seite 122 Beispiel 7.6}
+\section{Laplacetransformation}
+Durch die Laplacetransformation wird einer Funktion $f$ im Zeitbereich eine Funktion $F$ im komplexen Bildbereich zugeordnet.
+\begin{equation*}
+	f(t)\laplace F(s)=\int_0^\infty f(t)e^{-st}dt, \quad t\in\mathbb{R}, s\in\mathbb{C}
+\end{equation*}
+Die Fouriertransformierte einer Funktion geht aus der Laplacetransformierten durch ersetzen von $s=2\pi if$ hervor.\\
+Eigenschaften:
+\begin{itemize}
+	\item \textbf{Linearität}:\\
+			Eine Addition von Funktionen im Zeitbereich entspricht einer Addition der Laplacetransformierten im Bildbereich.\\
+			Eine Multiplikation einer Funktion mit einem konstanten Faktor im Zeitbereich entspricht der Multiplikation mit demselben Faktor im Bildbereich.
+			\begin{eqnarray*}
+				f_1(t),f_2(t) & \laplace & F_1(s),F_2(s)\\
+				\downarrow & & \downarrow \\
+				C_1f_1(t)+C_2f_2(t) & \laplace & C_1F_1(s)+C_2F_2(s)
+			\end{eqnarray*}
+	\item \textbf{Ähnlichkeit}:\\
+			Eine Ersetzung von $t$ durch $at$ der Funktion $f$ im Zeitbereich entspricht der Ersetzung von $s$ durch $\frac{s}{a}$im Bildbereich und einer Division der Laplacetransformierten durch $a$.
+			\begin{eqnarray*}
+				f(t) & \laplace & F(s)\\
+				\downarrow & & \downarrow \\
+				f(at) & \laplace & \frac{1}{a} F\left(\frac{s}{a}\right)
+			\end{eqnarray*}
+	\item \textbf{Verschiebung im Bildbereich/Dämpfungssatz}:\\
+			Eine Verschiebung der Funktion $F$ um $s_0$ im Bildbereich entspricht der Multiplikation mit $e^{-s_0 t}$ im Zeitbereich.
+			\begin{eqnarray*}
+				F(s) & \Laplace & f(t)\\
+				\downarrow & & \downarrow \\
+				F(s-s_0) & \Laplace & e^{-s_0t}f(t)
+			\end{eqnarray*}
+\end{itemize}
+\subsection{Differenziation und Integration}
+\begin{itemize}
+	\item \textbf{Differenziation im Zeitbereich}:\\
+			\begin{eqnarray*}
+				f(t) & \laplace & F(s)\\
+				\downarrow & & \downarrow \\
+				f'(t) & \laplace & s F\left(s\right) -f(0)
+			\end{eqnarray*}
+	\item \textbf{Höhere Ableitungen im Zeitbereich}:\\
+			\begin{eqnarray*}
+				f'(t) & \laplace & s F\left(s\right) -f(0)\\
+				f''(t) & \laplace & s^2 F\left(s\right) -sf(0)-f'(0)\\
+				... & & \\
+				f^{(n)}(t) & \laplace & s^nF(s)-s^{n-1}f(0)- \dotsm -sf^{n-2}(0) - f^{n-1}(0)
+			\end{eqnarray*}
+	\item \textbf{Integration im Zeitbereich}:\\
+		 	\begin{eqnarray*}
+				f(t) & \laplace & F(s)\\
+				\downarrow & & \downarrow \\
+				\int_0^tf(\tau)d\tau & \laplace & \frac{1}{s} F\left(s\right)
+			\end{eqnarray*}
+	\item \textbf{Integration im Bildbereich}:\\
+		 	\begin{eqnarray*}
+				F(s) & \Laplace & f(t)\\
+				\downarrow & & \downarrow \\
+				\int_s^\infty F(u)du & \Laplace & \frac{1}{t} f\left(s\right)
+			\end{eqnarray*}
+	\item \textbf{Faltung im Zeitbereich}:\\
+			\begin{eqnarray*}
+				f_1(t),f_2(t) & \laplace & F_1(s),F_2(s)\\
+				\downarrow & & \downarrow \\
+				f_1(t)\star f_2(t) & \laplace & F_1(s)\cdot F_2(s)
+			\end{eqnarray*}
+\end{itemize}
+\subsection{Rücktransformation}
+Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
+\subsection{Lösung von gewöhnlichen DGL mit Laplacetransformation}
+\begin{itemize}
+	\item Transformation der Differenzialgleichung in den Bildbereich.
+	\item Lösung der algebraischen Gleichung im Bildbreich.
+	\item Rücktransformation mittels Korrespondenztabelle.
+\end{itemize}
+\begin{eqnarray*}
+	\text{Differentialgleichung} & \laplace & \text{Algebraische Gleichung}\\
+	\downarrow & & \downarrow \\
+	\text{Lösung Zeitbereich} & \laplace & \text{Lösung Bildbereich}
+\end{eqnarray*}
+\subsection{LTI-Systeme}
+\todo{Zusammenfassung LTI systeme notwendig?}
 \section{Zusatz}
 \subsection{Integration}
 \begin{equation*}
@@ -558,6 +780,8 @@ Für eine Stichprobe $x_1,...,x_n$ von $X$ mit $\bar{x}=\frac{1}{n}\sum_{i=1}^nx
 	u(x)\cdot v(x) = \int u'(x) \cdot v(x) dx + \int u(x) \cdot v'(x) dx
 \end{equation*}
 \todo{Integrations regeln}
+\subsection{Partialbruchzerlegung}
+\todo{Partialbruchzerlegung basics}
 \subsection{Differentialgleichungen}
 \todo{Basics DGL Lösungen}
 \newpage
