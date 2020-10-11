@@ -837,6 +837,27 @@ Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
 	\end{adjustbox}
 \end{table}
 \newpage
+\subsection{Korrespondenztabelle}
+\begin{tabular}{r|c|c||r|c|c}
+	Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ & Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ \\\hline
+	1 & $1$ & $\delta(t)$ & 17 & $\frac{a}{s^2+a^2}$ & $\sin at$\\
+	2 & $\frac{1}{s}$ & $1$ & 18 & $\frac{s}{s^2+a^2}$ & $\cos at$\\
+	3 & $\frac{1}{s^2}$ & $t$ & 19 & $\frac{a}{s^2-a^2}$ & $\sinh at$\\
+	4 & $\frac{n!}{s^n}$ & $t^n$ & 20 & $\frac{s}{s^2-a^2}$ & $\cosh at$\\\hline
+	5 & $\frac{1}{s-a}$ & $e^{at}$ & 21 & $\frac{a}{(s-b)^2+a^2}$ & $e^{bt}\sin at$\\
+	6 & $\frac{1}{(s-a)^2}$ & $te^{at}$ & 22 & $\frac{s-b}{(s-b)^2+a^2}$ & $e^{bt}\cos at$\\
+	7 & $\frac{a}{s(s-a)}$ & $e^{at}-1$ & 23 & $\frac{a}{(s-b)^2-a^2}$ & $e^{bt}\sinh at$\\
+	8 & $\frac{a-b}{(s-a)(s-b)}$ & $e^{at}-e^{bt}$ & 24 & $\frac{s-b}{(s-b)^2-a^2}$ & $e^{bt}\cosh at$\\\hline
+	9 & $\frac{a}{1+as}$ & $e^{-\frac{t}{a}}$ & 25 & $\frac{2as}{(s^2+a^2)^2}$ & $t\sin at$\\
+	10 & $\frac{a^2}{(1+as)^2}$ & $te^{-\frac{t}{a}}$ & 26 & $\frac{s^2-a^2}{(s^2+a^2)^2}$ & $t\cos at$\\
+	11 & $\frac{1}{s(1+as)}$ & $1-e^{-\frac{t}{a}}$ & 27 & $\frac{2as}{(s^2-a^2)^2}$ & $t\sinh at$\\
+	12 & $\frac{a-b}{(1+as)(1+bs)}$ & $e^{-\frac{t}{a}}-e^{-\frac{t}{b}}$ & 28 & $\frac{s^2+a^2}{(s^2-a^2)^2}$ & $t\cosh at$\\\hline
+	13 & $\frac{s}{(s-a)^2}$ & $(1+at)e^{at}$ & 29 & $\frac{2}{(s-a)^3}$ & $t^2e^{at}$\\
+	14 & $\frac{(a-b)s}{(s-a)(s-b)}$ & $ae^{at}+be^{bt}$ & 30 & $\frac{2s}{(s-a)^3}$ & $(at^2+2t)e^{at}$\\
+	15 & $\frac{a^3s}{(1+as)^2}$ & $(a-t)e^{-\frac{t}{a}}$ & 31 & $\frac{2s^2}{(s-a)^3}$ & $(a^2t^2+4at+2)e^{at}$\\
+	16 & $\frac{ab(a-b)s}{(1+as)(1+bs)}$ & $ae^{-\frac{t}{b}}-be^{-\frac{t}{a}}$ & 32 & $\frac{a^2}{s^2(s-a)}$ & $e^{at}-at-1$\\\hline
+\end{tabular}
+\newpage
 \pagenumbering{Alph}
 \section{Anhang}
 \printbibliography[heading=subbibnumbered]
