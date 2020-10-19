@@ -114,12 +114,13 @@ Der mittlere Abstand wird nicht sehr häufig verwendet, da das Rechnen mit Betr�
 \end{equation*}
 \subsection{Kovarianz}
 \begin{equation*}
-	y_{xy}:=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})
+	s_{xy}:=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})
 \end{equation*}
 \subsection{Korrelationskoeffizient}
 \begin{equation*}
 	r_{xy}:=\frac{s_{xy}}{s_x\cdot s_y}
 \end{equation*}
+\todo{Bemerkung zum Korellationseffekt}
 \subsection{Regressionsgerade}
 \begin{equation*}
 	y = a + bx
@@ -439,6 +440,7 @@ Es gilt:
 	\sigma^2 =\frac{(b-a)^2}{12}\\
 	\sigma = \frac{b-a}{\sqrt{12}}
 \end{gather*}
+\todo{Addition von Gleichverteilungen}
 \subsubsection{Inversionsmethode}
 Es sei $X$ eine Zufallsvariable und $F_X$ ihre Verteilungsfunktion.\\
 Die Funktion $F_X^{-1}$ ist die inverse Verteilungsfunktion (\textbf{Quantil-Funktion}):
@@ -526,7 +528,7 @@ Vorgehen zum aufstellen eines Hypothesentests:
 	\item Aufstellen der Nullhypothese $H_0$ und Alternativhypothese $H_1$
 	\item Festlegen des Signifikanzniveaus $\alpha$ (Wahrscheinlichkeit für einen Fehler erster Art)
 	\item Berechnung des Streubereichs zum Signifikanzniveau $\alpha$
-	\item Erhebung einer Stichbrube und berechnen der zugehörigen Prüfgröße
+	\item Erhebung einer Stichprobe und berechnen der zugehörigen Prüfgröße
 	\item Entscheidung über die Ablehnung oder Annahme von $H_0$
 \end{enumerate}
 \subsubsection{Hypothesentests bei Normalverteilungen}
@@ -535,9 +537,10 @@ Streubereiche für Normalverteilungen:\\
 	\hline
 	\textbf{$H_0$} & \textbf{$H_1$} & \textbf{Streubreich}\\\hline
 	$\mu=\mu_0$ & $\mu\neq\mu_0$ & $\left[\mu_0-z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}, \mu_0+z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}\right]$\\\hline
-	$\mu\geq\mu_0$ & $\mu<\mu_0$ & $\left[\mu_0-z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}, \infty\right)$\\\hline
-	$\mu\leq\mu_0$ & $\mu>\mu_0$ & $\left(-\infty, \mu_0+z_{1-\alpha/2\frac{\sigma}{\sqrt{n}}}\right]$\\\hline
+	$\mu\geq\mu_0$ & $\mu<\mu_0$ & $\left[\mu_0-z_{1-\alpha}\cdot\frac{\sigma}{\sqrt{n}}, \infty\right)$\\\hline
+	$\mu\leq\mu_0$ & $\mu>\mu_0$ & $\left(-\infty, \mu_0+z_{1-\alpha}\cdot \frac{\sigma}{\sqrt{n}}\right]$\\\hline
 \end{tabular}\\
+$z_{1-\alpha/2}$ ist hierbei derjenige Wert bei welchem $\Phi (z) = 1-\alpha/2$ wird.\\ 
 Für eine Stichprobe $x_1,...,x_n$ von $X$ mit $\bar{x}=\frac{1}{n}\sum_{i=1}^nx_i$ gilt:
 \begin{gather*}
 	\bar{x}\in \text{ Streubereich }\Rightarrow H_0 \text{ wird akzeptiert}\\
@@ -566,7 +569,8 @@ Die Fourierreihe konvergiert
 	a_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)cos(k\omega t)dt, \quad k=1,2,...\\
 	b_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)sin(k\omega t)dt, \quad k=1,2,...\\
 \end{gather*}
-Für periodische \textbf{stetige Funktionen Konvergiert} die Fourierreihe schnell, da ihre Koeffizienten $a_k,b_k$ zu $1/k^2$ proportional abklingen. Für Funktionen mit Sprungstellen klingen sie nur zu $1/k$ proportional ab.
+Für periodische \textbf{stetige Funktionen Konvergiert} die Fourierreihe schnell, da ihre Koeffizienten $a_k,b_k$ zu $1/k^2$ proportional abklingen. Für Funktionen mit Sprungstellen klingen sie nur zu $1/k$ proportional ab.\\
+Für \textbf{gerade Funktionen} (achensymmetrisch zur y-Achse) sind die Koeffizienten $b_k = 0$. Für \textbf{ungerade Funktionen} (punktsymmetrisch zum Ursprung) sind die Koeffizeienten $a_k = 0$.
 \subsection{Gibbs'sches Phänomen}
 Bei z.B. nachbildung einer Rechteckfunktion mittels der Fourierreihe bleibt ein Überschwinger kurz nach der Flanke von $\sim 9\%$ bestehen (und auch nicht entfernen).
 \subsection{Komplexe Fourierreihe}
@@ -585,6 +589,7 @@ Der zusammenhang zwischen der \textbf{komplexen Fourrierkoeffizienten} zu den re
 	c_k=\frac{1}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)e^{-ik\omega t}dt, \quad k=0,\pm1,\pm2,...
 \end{equation*}
 \subsection{Ähnlichkeit, Zeitumkehr und Zeitverschiebung}
+\todo{Beispiele!!!}
 \begin{itemize}
 	\item \textbf{Ähnlichkeit}:\\
 			Die Funktionen $f(t)$ und $\tilde{f}(t)=f(at)$ haben dieselben Fourierkoeffizienten. Die beiden Fourierreihen haben lediglich unterschiedliche Perioden und Kreisfrequenzen.
@@ -593,7 +598,7 @@ Der zusammenhang zwischen der \textbf{komplexen Fourrierkoeffizienten} zu den re
 			\begin{equation*}
 				\tilde{a_k}=a_k,\tilde{b_k}=-b_k,\tilde{c_k}=\overline{c_k},\tilde{A_k}=A_k,\tilde{\varphi_k}=\varphi_k, 
 			\end{equation*}
-	\item\textbf{Zeitumkehr}:\\
+	\item\textbf{Zeitverschiebung}:\\
 			Die Funktionen $f(t)$ und $\tilde{f}(t)=f(t-t_0)$ haben dieselben Anplituden $\tilde{A_k}=A_k$ und Phasenwinkel $\tilde{\varphi_k}=-k\omega t_0 + \varphi_k$
 \end{itemize}
 \section{Verallgemeinerte Funktionen}
@@ -836,12 +841,13 @@ Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
 	\end{tabular}
 	\end{adjustbox}
 \end{table}
+\todo{Wichtige Zellen Markieren}
 \newpage
 \subsection{Korrespondenztabelle}
 \begin{tabular}{r|c|c||r|c|c}
 	Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ & Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ \\\hline
 	1 & $1$ & $\delta(t)$ & 17 & $\frac{a}{s^2+a^2}$ & $\sin at$\\
-	2 & $\frac{1}{s}$ & $1$ & 18 & $\frac{s}{s^2+a^2}$ & $\cos at$\\
+	2 & $\frac{1}{s}$ & $\sigma(t)$ & 18 & $\frac{s}{s^2+a^2}$ & $\cos at$\\
 	3 & $\frac{1}{s^2}$ & $t$ & 19 & $\frac{a}{s^2-a^2}$ & $\sinh at$\\
 	4 & $\frac{n!}{s^n}$ & $t^n$ & 20 & $\frac{s}{s^2-a^2}$ & $\cosh at$\\\hline
 	5 & $\frac{1}{s-a}$ & $e^{at}$ & 21 & $\frac{a}{(s-b)^2+a^2}$ & $e^{bt}\sin at$\\
@@ -857,8 +863,8 @@ Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
 	15 & $\frac{a^3s}{(1+as)^2}$ & $(a-t)e^{-\frac{t}{a}}$ & 31 & $\frac{2s^2}{(s-a)^3}$ & $(a^2t^2+4at+2)e^{at}$\\
 	16 & $\frac{ab(a-b)s}{(1+as)(1+bs)}$ & $ae^{-\frac{t}{b}}-be^{-\frac{t}{a}}$ & 32 & $\frac{a^2}{s^2(s-a)}$ & $e^{at}-at-1$\\\hline
 \end{tabular}
-\newpage
-\pagenumbering{Alph}
-\section{Anhang}
-\printbibliography[heading=subbibnumbered]
+%\newpage
+%\pagenumbering{Alph}
+%\section{Anhang}
+%\printbibliography[heading=subbibnumbered]
 \end{document}
