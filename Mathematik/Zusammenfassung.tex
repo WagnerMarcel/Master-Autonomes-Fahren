@@ -276,7 +276,7 @@ Sind $A, B \subset \Omega$ \textbf{abhängige} Ereignisse gilt:
 \(\displaystyle \)
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
+	\begin{tabular}{|p{0.25\textwidth}|p{0.7\textwidth}|}
 		\hline
 		Multiplikationssatz & \(\displaystyle P(A\cap B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B)\) \\\hline
 		Satz der totalen Wahrscheinlichkeit & Der Ergebnisraum ist gegeben durch $\Omega = \bigcup\limits_{j=1}^\infty B_j$ mit $P(B_j)>0$ und alle $j$ sind paarweise Disjunkt $B_i \cap B_j = \emptyset$ für $i\neq j$ \newline \(\displaystyle P(A) = \sum_{j=1}^\infty P(A|B_j) \cdot P(B_j)\) \newline Für den Spezialfall $\Omega = B\cup B^C$ gilt: \newline \(\displaystyle P(A) = P(B) \cdot P(A|B) + P(B^C) \cdot P(A|B^C)\) \\\hline
@@ -510,6 +510,7 @@ Für eine gleichverteilte Zufallsvariable (das bedeutet alle Zahlen von 0 bis 1 
 	X:=F_X^{-1}(U) \text{ hat die Verteilungsfunktion } F_X
 \end{equation*}
 Erklärung: U ist von 0 bis 1 gleichverteilt (alle Zahlen (x-Achse) kommen gleich häufig vor). Nun wird jeder Wert der Zufallsvariable U in die inverse Verteilungsfunktion eingesetzt. Dadurch wird jetzt die Funktion $F_X$ nachgebildet, da immer das kleinste x der Verteilungsfunktion für den Wert von U zurückgegeben wird.
+\newpage
 \subsection{Normalverteilung}
 Die \textbf{Normalverteilung} $X$ ($X\sim N(\mu , \sigma^2)$) mit den Parametern $\mu\in\mathbb{R}$ und $\sigma\in\mathbb{R}^+$ besitzt folgende Dichte und wird auch \textbf{Gaußsche Glockenkurve} genannt:
 \begin{equation*}
@@ -630,11 +631,15 @@ Die Fourierreihe konvergiert
 \end{enumerate}
 \subsection{Berechnung der Fourierkoeffizienten}
 \begin{gather*}
-	a_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)cos(k\omega t)dt, \quad k=1,2,...\\
+	a_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)cos(k\omega t)dt, \quad k=1,2,...\quad
 	b_k=\frac{2}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)sin(k\omega t)dt, \quad k=1,2,...\\
 \end{gather*}
 Für periodische \textbf{stetige Funktionen Konvergiert} die Fourierreihe schnell, da ihre Koeffizienten $a_k,b_k$ zu $1/k^2$ proportional abklingen. Für Funktionen mit Sprungstellen klingen sie nur zu $1/k$ proportional ab.\\
 Für \textbf{gerade Funktionen} (achensymmetrisch zur y-Achse) sind die Koeffizienten $b_k = 0$. Für \textbf{ungerade Funktionen} (punktsymmetrisch zum Ursprung) sind die Koeffizeienten $a_k = 0$.
+\subsection{Eulersche Formel}
+\begin{equation*}
+	e^{ix}=cos(x)+isin(x)
+\end{equation*}
 \subsection{Gibbs'sches Phänomen}
 Bei z.B. nachbildung einer Rechteckfunktion mittels der Fourierreihe bleibt ein Überschwinger kurz nach der Flanke von $\sim 9\%$ bestehen (und auch nicht entfernen).
 \subsection{Komplexe Fourierreihe}
@@ -646,12 +651,14 @@ Der zusammenhang zwischen der \textbf{komplexen Fourrierkoeffizienten} zu den re
 \begin{gather*}
 	a_0=2\Re(c_0), \quad c_0=\frac{a_0}{2}\\
 	a_k=2\Re(c_k), \quad c_k=\frac{a_k-ib_k}{2}, \quad k=1,2,3,...\\
-	b_k=-2\Im(c_k), \quad c_k=\frac{a_k+ib_k}{2}, \quad k=-1,-2,-3,...
-\end{gather*}
-\subsection{Berechnung komplexer Fourierkoeffizienten}
-\begin{equation*}
+	b_k=-2\Im(c_k), \quad c_k=\frac{a_k+ib_k}{2}, \quad k=-1,-2,-3,...\\
 	c_k=\frac{1}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)e^{-ik\omega t}dt, \quad k=0,\pm1,\pm2,...
-\end{equation*}
+\end{gather*}
+%\subsection{Berechnung komplexer Fourierkoeffizienten}
+%\begin{equation*}
+%	c_k=\frac{1}{T}\int\limits_{-\frac{T}{2}}^{\frac{T}{2}}f(t)e^{-ik\omega t}dt, \quad k=0,\pm1,\pm2,...
+%\end{equation*}
+\newpage
 \subsection{Ähnlichkeit, Zeitumkehr und Zeitverschiebung}
 \textbf{Ähnlichkeit}:\\
 Die Funktionen $f(t)$ und $\tilde{f}(t)=f(at)$ haben dieselben Fourierkoeffizienten. Die beiden Fourierreihen haben lediglich unterschiedliche Perioden und Kreisfrequenzen.\\
@@ -850,6 +857,7 @@ Eigenschaften:
 				S(f-f_0) & \Laplace & e^{-i2\pi f_0t}s(t)
 			\end{eqnarray*}
 \end{itemize}
+\newpage
 \section{Laplacetransformation}
 Durch die Laplacetransformation wird einer Funktion $f$ im Zeitbereich eine Funktion $F$ im komplexen Bildbereich zugeordnet.
 \begin{equation*}
@@ -882,39 +890,71 @@ Eigenschaften:
 			\end{eqnarray*}
 \end{itemize}
 \subsection{Differenziation und Integration}
-\begin{itemize}
-	\item \textbf{Differenziation im Zeitbereich}:\\
-			\begin{eqnarray*}
-				f(t) & \laplace & F(s)\\
-				\downarrow & & \downarrow \\
-				f'(t) & \laplace & s F\left(s\right) -f(0)
-			\end{eqnarray*}
-	\item \textbf{Höhere Ableitungen im Zeitbereich}:\\
-			\begin{eqnarray*}
-				f'(t) & \laplace & s F\left(s\right) -f(0)\\
-				f''(t) & \laplace & s^2 F\left(s\right) -sf(0)-f'(0)\\
-				... & & \\
-				f^{(n)}(t) & \laplace & s^nF(s)-s^{n-1}f(0)- \dotsm -sf^{n-2}(0) - f^{n-1}(0)
-			\end{eqnarray*}
-	\item \textbf{Integration im Zeitbereich}:\\
-		 	\begin{eqnarray*}
-				f(t) & \laplace & F(s)\\
-				\downarrow & & \downarrow \\
-				\int_0^tf(\tau)d\tau & \laplace & \frac{1}{s} F\left(s\right)
-			\end{eqnarray*}
-	\item \textbf{Integration im Bildbereich}:\\
-		 	\begin{eqnarray*}
-				F(s) & \Laplace & f(t)\\
-				\downarrow & & \downarrow \\
-				\int_s^\infty F(u)du & \Laplace & \frac{1}{t} f\left(s\right)
-			\end{eqnarray*}
-	\item \textbf{Faltung im Zeitbereich}:\\
-			\begin{eqnarray*}
-				f_1(t),f_2(t) & \laplace & F_1(s),F_2(s)\\
-				\downarrow & & \downarrow \\
-				f_1(t)\star f_2(t) & \laplace & F_1(s)\cdot F_2(s)
-			\end{eqnarray*}
-\end{itemize}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{0.2\textwidth}|l|}
+		\hline
+		Differenziation im Zeitbereich & $\begin{aligned}
+			f(t) &&\laplace\quad& F(s)\\
+			\downarrow & & \downarrow\\
+			f'(t) &&\laplace\quad& s F\left(s\right) -f(0)
+		\end{aligned}$\\\hline
+		Höhere Ableitungen im Zeitbereich & $\begin{aligned}
+			f'(t) &&\laplace\quad& s F\left(s\right) -f(0)\\
+			f''(t) &&\laplace\quad& s^2 F\left(s\right) -sf(0)-f'(0)\\
+			... && & \\
+			f^{(n)}(t) &&\laplace\quad& s^nF(s)-s^{n-1}f(0)- \dotsm -sf^{n-2}(0) - f^{n-1}(0)
+		\end{aligned}$\\\hline
+		Integration im Zeitbereich & $\begin{aligned}
+			f(t) && \laplace\quad& F(s)\\
+			\downarrow && & \downarrow \\
+			\int_0^tf(\tau)d\tau && \laplace\quad& \frac{1}{s} F\left(s\right)
+		\end{aligned}$\\\hline
+		Integration im Bildbreich & $\begin{aligned}
+			F(s) && \Laplace\quad& f(t)\\
+			\downarrow && & \downarrow \\
+			\int_s^\infty F(u)du && \Laplace\quad& \frac{1}{t} f\left(s\right)
+		\end{aligned}$\\\hline
+		Faltung im Zeitbereich & $\begin{aligned}
+			f_1(t),f_2(t) && \laplace\quad& F_1(s),F_2(s)\\
+			\downarrow & && \downarrow \\
+			f_1(t)\star f_2(t) && \laplace\quad& F_1(s)\cdot F_2(s)
+		\end{aligned}$\\\hline
+	\end{tabular}
+\end{table}
+%\begin{itemize}
+%	\item \textbf{Differenziation im Zeitbereich}:\\
+%			\begin{eqnarray*}
+%				f(t) & \laplace & F(s)\\
+%				\downarrow & & \downarrow \\
+%				f'(t) & \laplace & s F\left(s\right) -f(0)
+%			\end{eqnarray*}
+%	\item \textbf{Höhere Ableitungen im Zeitbereich}:\\
+%			\begin{eqnarray*}
+%				f'(t) & \laplace & s F\left(s\right) -f(0)\\
+%				f''(t) & \laplace & s^2 F\left(s\right) -sf(0)-f'(0)\\
+%				... & & \\
+%				f^{(n)}(t) & \laplace & s^nF(s)-s^{n-1}f(0)- \dotsm -sf^{n-2}(0) - f^{n-1}(0)
+%			\end{eqnarray*}
+%	\item \textbf{Integration im Zeitbereich}:\\
+%		 	\begin{eqnarray*}
+%				f(t) & \laplace & F(s)\\
+%				\downarrow & & \downarrow \\
+%				\int_0^tf(\tau)d\tau & \laplace & \frac{1}{s} F\left(s\right)
+%			\end{eqnarray*}
+%	\item \textbf{Integration im Bildbereich}:\\
+%		 	\begin{eqnarray*}
+%				F(s) & \Laplace & f(t)\\
+%				\downarrow & & \downarrow \\
+%				\int_s^\infty F(u)du & \Laplace & \frac{1}{t} f\left(s\right)
+%			\end{eqnarray*}
+%	\item \textbf{Faltung im Zeitbereich}:\\
+%			\begin{eqnarray*}
+%				f_1(t),f_2(t) & \laplace & F_1(s),F_2(s)\\
+%				\downarrow & & \downarrow \\
+%				f_1(t)\star f_2(t) & \laplace & F_1(s)\cdot F_2(s)
+%			\end{eqnarray*}
+%\end{itemize}
 \subsection{Rücktransformation}
 Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
 \subsection{Lösung von gewöhnlichen DGL mit Laplacetransformation}
@@ -942,20 +982,30 @@ Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
 	\end{tabular}	
 \end{table}
 \subsection{Integration}
-\begin{equation*}
-	\int\limits_{a}^{b}f(x) dx = [F(x)]_a^b = F(b) - F(a)
-\end{equation*}
-\begin{equation*}
-	\int\limits_{a}^{b}f(x) + g(x) dx = \int\limits_{a}^{b}f(x) dx + \int\limits_{a}^{b}g(x) dx
-\end{equation*}
-\begin{equation*}
-	\int\limits_{a}^{b}c\cdot f(x) dx = c\cdot \int\limits_{a}^{b}f(x) dx
-\end{equation*}
-
-\subsection{Partielle Integration}
-\begin{equation*}
-	u(x)\cdot v(x) = \int u'(x) \cdot v(x) dx + \int u(x) \cdot v'(x) dx
-\end{equation*}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|}
+		\hline
+		Lösen eines Integrals & $\displaystyle \int\limits_{a}^{b}f(x) dx = [F(x)]_a^b = F(b) - F(a)$\\\hline
+		Summenregel & $\displaystyle \int\limits_{a}^{b}f(x) + g(x) dx = \int\limits_{a}^{b}f(x) dx + \int\limits_{a}^{b}g(x) dx$\\\hline
+		Faktorregel & $\displaystyle \int\limits_{a}^{b}c\cdot f(x) dx = c\cdot \int\limits_{a}^{b}f(x) dx$\\\hline
+		Partielle Integration & $\displaystyle u(x)\cdot v(x) = \int u'(x) \cdot v(x) dx + \int u(x) \cdot v'(x) dx$\\\hline
+	\end{tabular}
+\end{table}
+%\begin{equation*}
+%	\int\limits_{a}^{b}f(x) dx = [F(x)]_a^b = F(b) - F(a)
+%\end{equation*}
+%\begin{equation*}
+%	\int\limits_{a}^{b}f(x) + g(x) dx = \int\limits_{a}^{b}f(x) dx + \int\limits_{a}^{b}g(x) dx
+%\end{equation*}
+%\begin{equation*}
+%	\int\limits_{a}^{b}c\cdot f(x) dx = c\cdot \int\limits_{a}^{b}f(x) dx
+%\end{equation*}
+%
+%\subsection{Partielle Integration}
+%\begin{equation*}
+%	u(x)\cdot v(x) = \int u'(x) \cdot v(x) dx + \int u(x) \cdot v'(x) dx
+%\end{equation*}
 \subsection{Stammfunktionen}
 \begin{table}[H]
 	\centering
@@ -988,10 +1038,47 @@ Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
 		Fourier-Reihe enthält nur Kosinus-Terme & Fourier-Reihe enthält nur Sinus-Terme\\\hline
 	\end{tabular}
 \end{table}
-\subsection{Eulersche Formel}
+\subsection{Mitternachtsformel Formel}
 \begin{equation*}
-	e^{ix}=cos(x)+isin(x)
+	x_{1/2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
 \end{equation*}
+\subsection{Korrespondenztabelle}
+\begin{tabular}{|r|c|c||r|c|c|}
+	\hline
+	Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ & Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ \\\hline\hline
+	1 & $1$ & $\delta(t)$ & 17 & $\frac{a}{s^2+a^2}$ & $\sin at$\\
+	2 & $\frac{1}{s}$ & $\sigma(t)$ & 18 & $\frac{s}{s^2+a^2}$ & $\cos at$\\
+	3 & $\frac{1}{s^2}$ & $t$ & 19 & $\frac{a}{s^2-a^2}$ & $\sinh at$\\
+	4 & $\frac{n!}{s^n}$ & $t^n$ & 20 & $\frac{s}{s^2-a^2}$ & $\cosh at$\\\hline
+	5 & $\frac{1}{s-a}$ & $e^{at}$ & 21 & $\frac{a}{(s-b)^2+a^2}$ & $e^{bt}\sin at$\\
+	6 & $\frac{1}{(s-a)^2}$ & $te^{at}$ & 22 & $\frac{s-b}{(s-b)^2+a^2}$ & $e^{bt}\cos at$\\
+	7 & $\frac{a}{s(s-a)}$ & $e^{at}-1$ & 23 & $\frac{a}{(s-b)^2-a^2}$ & $e^{bt}\sinh at$\\
+	8 & $\frac{a-b}{(s-a)(s-b)}$ & $e^{at}-e^{bt}$ & 24 & $\frac{s-b}{(s-b)^2-a^2}$ & $e^{bt}\cosh at$\\\hline
+	9 & $\frac{a}{1+as}$ & $e^{-\frac{t}{a}}$ & 25 & $\frac{2as}{(s^2+a^2)^2}$ & $t\sin at$\\
+	10 & $\frac{a^2}{(1+as)^2}$ & $te^{-\frac{t}{a}}$ & 26 & $\frac{s^2-a^2}{(s^2+a^2)^2}$ & $t\cos at$\\
+	11 & $\frac{1}{s(1+as)}$ & $1-e^{-\frac{t}{a}}$ & 27 & $\frac{2as}{(s^2-a^2)^2}$ & $t\sinh at$\\
+	12 & $\frac{a-b}{(1+as)(1+bs)}$ & $e^{-\frac{t}{a}}-e^{-\frac{t}{b}}$ & 28 & $\frac{s^2+a^2}{(s^2-a^2)^2}$ & $t\cosh at$\\\hline
+	13 & $\frac{s}{(s-a)^2}$ & $(1+at)e^{at}$ & 29 & $\frac{2}{(s-a)^3}$ & $t^2e^{at}$\\
+	14 & $\frac{(a-b)s}{(s-a)(s-b)}$ & $ae^{at}+be^{bt}$ & 30 & $\frac{2s}{(s-a)^3}$ & $(at^2+2t)e^{at}$\\
+	15 & $\frac{a^3s}{(1+as)^2}$ & $(a-t)e^{-\frac{t}{a}}$ & 31 & $\frac{2s^2}{(s-a)^3}$ & $(a^2t^2+4at+2)e^{at}$\\
+	16 & $\frac{ab(a-b)s}{(1+as)(1+bs)}$ & $ae^{-\frac{t}{b}}-be^{-\frac{t}{a}}$ & 32 & $\frac{a^2}{s^2(s-a)}$ & $e^{at}-at-1$\\\hline
+\end{tabular}
+\subsection{Zahlenräume}
+\begin{tabular}{|p{0.1\textwidth}|p{0.2\textwidth}|p{0.6\textwidth}|}
+	\hline
+	Symbol & Verwendung & Bedeutung\\\hline\hline
+%	$\in$ & $\omega\quad\in\quad\Omega$ & Element ($\omega$ ist in $\Omega$ enthalten) \\\hline
+%	$\cap$ & $A\quad\cap\quad B$ & Disjunkt (Kein Teil von A ist ein Teil von B) \\\hline
+%	$\cup$ & $A\quad\cup\quad B$ & Kunjunktion (Ein Teil von A ist ein Teil von B)\\\hline
+%	$\subseteq$ & $A\quad\subseteq\quad B$ & Teilmenge (A ist eine Teilmenge von B)\\\hline
+%	$\setminus$ & $A\quad\setminus\quad B$ & Differenz (Differenz der mengen A und B)\\\hline
+%	$^\mathrm{C}$ & $A^\mathrm{C}$ & Komplement (Differenz des Universums (kann eine\newline größere Menge sein) und der Teilmenge)\\\hline
+	$\mathbb{N}$ & Natürliche Zahlen & Positive Ganze Zahlen ohne Null (1,2,3,...)\\\hline
+	$\mathbb{Z}$ & Ganze Zahlen & Ganze Zahlen (...,-2,-1,0,1,2,...)\\\hline
+	$\mathbb{Q}$ & Rationale Zahlen & $z\cdot \frac{1}{x}$ mit $z,x \in \mathbb{Z}$\\\hline
+	$\mathbb{R}$ & Reelle Zahlen & Erweiterung der Rationalen Zahlen durch diejenigen\newline Zahlen welche sich nicht durch Brüche darstellen\newline lassen (z.B.$\sqrt{2}, \pi$)\\\hline
+	$\mathbb{C}$ & Komplexe Zahlen & $a+bi$ mit $a,b\in \mathbb{R}$ und $i^2 = -1$\\\hline
+\end{tabular}
 \newpage
 \subsection{Standartnormalverteilungstabelle}
 \begin{table}[H]
@@ -1044,44 +1131,9 @@ Die Rücktrnsformation geschieht durch eine Korrespondenztabelle.
 	\end{tabular}
 	\end{adjustbox}
 \end{table}
-\newpage
-\subsection{Korrespondenztabelle}
-\begin{tabular}{|r|c|c||r|c|c|}
-	\hline
-	Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ & Nr. & Bildfunktion $F(s)$ & Zeitfunktion $f(t)$ \\\hline\hline
-	1 & $1$ & $\delta(t)$ & 17 & $\frac{a}{s^2+a^2}$ & $\sin at$\\
-	2 & $\frac{1}{s}$ & $\sigma(t)$ & 18 & $\frac{s}{s^2+a^2}$ & $\cos at$\\
-	3 & $\frac{1}{s^2}$ & $t$ & 19 & $\frac{a}{s^2-a^2}$ & $\sinh at$\\
-	4 & $\frac{n!}{s^n}$ & $t^n$ & 20 & $\frac{s}{s^2-a^2}$ & $\cosh at$\\\hline
-	5 & $\frac{1}{s-a}$ & $e^{at}$ & 21 & $\frac{a}{(s-b)^2+a^2}$ & $e^{bt}\sin at$\\
-	6 & $\frac{1}{(s-a)^2}$ & $te^{at}$ & 22 & $\frac{s-b}{(s-b)^2+a^2}$ & $e^{bt}\cos at$\\
-	7 & $\frac{a}{s(s-a)}$ & $e^{at}-1$ & 23 & $\frac{a}{(s-b)^2-a^2}$ & $e^{bt}\sinh at$\\
-	8 & $\frac{a-b}{(s-a)(s-b)}$ & $e^{at}-e^{bt}$ & 24 & $\frac{s-b}{(s-b)^2-a^2}$ & $e^{bt}\cosh at$\\\hline
-	9 & $\frac{a}{1+as}$ & $e^{-\frac{t}{a}}$ & 25 & $\frac{2as}{(s^2+a^2)^2}$ & $t\sin at$\\
-	10 & $\frac{a^2}{(1+as)^2}$ & $te^{-\frac{t}{a}}$ & 26 & $\frac{s^2-a^2}{(s^2+a^2)^2}$ & $t\cos at$\\
-	11 & $\frac{1}{s(1+as)}$ & $1-e^{-\frac{t}{a}}$ & 27 & $\frac{2as}{(s^2-a^2)^2}$ & $t\sinh at$\\
-	12 & $\frac{a-b}{(1+as)(1+bs)}$ & $e^{-\frac{t}{a}}-e^{-\frac{t}{b}}$ & 28 & $\frac{s^2+a^2}{(s^2-a^2)^2}$ & $t\cosh at$\\\hline
-	13 & $\frac{s}{(s-a)^2}$ & $(1+at)e^{at}$ & 29 & $\frac{2}{(s-a)^3}$ & $t^2e^{at}$\\
-	14 & $\frac{(a-b)s}{(s-a)(s-b)}$ & $ae^{at}+be^{bt}$ & 30 & $\frac{2s}{(s-a)^3}$ & $(at^2+2t)e^{at}$\\
-	15 & $\frac{a^3s}{(1+as)^2}$ & $(a-t)e^{-\frac{t}{a}}$ & 31 & $\frac{2s^2}{(s-a)^3}$ & $(a^2t^2+4at+2)e^{at}$\\
-	16 & $\frac{ab(a-b)s}{(1+as)(1+bs)}$ & $ae^{-\frac{t}{b}}-be^{-\frac{t}{a}}$ & 32 & $\frac{a^2}{s^2(s-a)}$ & $e^{at}-at-1$\\\hline
-\end{tabular}
-\subsection{Mathematische Symbole für Mengen}
-\begin{tabular}{|p{0.1\textwidth}|p{0.2\textwidth}|p{0.6\textwidth}|}
-	\hline
-	Symbol & Verwendung & Bedeutung\\\hline\hline
-	$\in$ & $\omega\quad\in\quad\Omega$ & Element ($\omega$ ist in $\Omega$ enthalten) \\\hline
-	$\cap$ & $A\quad\cap\quad B$ & Disjunkt (Kein Teil von A ist ein Teil von B) \\\hline
-	$\cup$ & $A\quad\cup\quad B$ & Kunjunktion (Ein Teil von A ist ein Teil von B)\\\hline
-	$\subseteq$ & $A\quad\subseteq\quad B$ & Teilmenge (A ist eine Teilmenge von B)\\\hline
-	$\setminus$ & $A\quad\setminus\quad B$ & Differenz (Differenz der mengen A und B)\\\hline
-	$^\mathrm{C}$ & $A^\mathrm{C}$ & Komplement (Differenz des Universums (kann eine\newline größere Menge sein) und der Teilmenge)\\\hline
-	$\mathbb{N}$ & Natürliche Zahlen & Positive Ganze Zahlen ohne Null (1,2,3,...)\\\hline
-	$\mathbb{Z}$ & Ganze Zahlen & Ganze Zahlen (...,-2,-1,0,1,2,...)\\\hline
-	$\mathbb{Q}$ & Rationale Zahlen & $z\cdot \frac{1}{x}$ mit $z,x \in \mathbb{Z}$\\\hline
-	$\mathbb{R}$ & Reelle Zahlen & Erweiterung der Rationalen Zahlen durch diejenigen\newline Zahlen welche sich nicht durch Brüche darstellen\newline lassen (z.B.$\sqrt{2}, \pi$)\\\hline
-	$\mathbb{C}$ & Komplexe Zahlen & $a+bi$ mit $a,b\in \mathbb{R}$ und $i^2 = -1$\\\hline
-\end{tabular}
+$z_{0.95}=1.6449$, $z_{0.975}=1.96$
+
+
 
 %\newpage
 %\pagenumbering{Alph}
