@@ -1,3 +1,9 @@
+# Aufgabenblatt 2 Aufgabe 1
+# Verschiedene numpy operationen auf einem 1000x1000 Array mit einer Millionen Zufallszahlen.
+# Author: Marcel Wagner
+# Studiengang: Master Autonomes Fahren
+# Datum: 23.10.2020
+
 import numpy as np
 
 np.random.seed(42)
@@ -15,4 +21,3 @@ print('Anzahl der Zeilen mit einem Mittel groesser als der Durchschnitt: ' + str
 print('Anzahl der Spalten mit einem Mittel groesser als der Durchschnitt: ' + str(np.count_nonzero(np.average(a, axis=0) > np.average(np.average(a, axis=1)))))
 b = np.where(a > np.average(a), 1,0)
 print('Binarisiertes Array, Anzahl der nullen: ' + str(np.sum(np.size(b))-np.count_nonzero(b)))
-
